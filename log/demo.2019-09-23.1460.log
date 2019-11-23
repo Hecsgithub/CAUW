@@ -1,0 +1,8 @@
+2019-09-23 05:10:26,934 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, class_id, notice_word, time from class_notice where class_id = ? 
+2019-09-23 05:10:26,936 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 080901201901(String)
+2019-09-23 05:10:26,940 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-23 05:11:07,543 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select major.*, Class.id as cid, Class.class_id as cclass_id, Class.name as cname, Class.director as cdirector, Class.grade as cgrade, Class.major_id as cmajor_id from major,Class ,Users WHERE major.major_id=Class.major_id and Class.director=Users.username and Users.username = ? 
+2019-09-23 05:11:07,546 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 2019730(String)
+2019-09-23 05:11:07,549 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 2
+2019-09-23 05:11:25,301 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select major.*, Class.id as cid, Class.class_id as cclass_id, Class.name as cname, Class.director as cdirector, Class.grade as cgrade, Class.major_id as cmajor_id from major,Class ,Users WHERE major.major_id=Class.major_id and Class.director=Users.username and Users.username = ? 
+2019-09-23 05:11:25,303 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 2019730(String)

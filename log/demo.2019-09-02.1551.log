@@ -1,0 +1,10 @@
+2019-09-02 18:54:21,112 DEBUG (BaseJdbcLogger.java:143)- <==    Updates: 1
+2019-09-02 18:54:21,116 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select dormitory.id, dormitory.dong, dormitory.floor, dormitory.room, dormitory.sex, dormitory.number, dormitory.rent from dormitory LEFT JOIN dormitory_allocation on dormitory_allocation.dormitory_id = dormitory.id LEFT JOIN class on dormitory_allocation.class_id=class.class_id LEFT JOIN major on class.major_id=major.major_id WHERE sex = ? and class.class_id = ? group by dormitory.dong,dormitory.floor,dormitory.room 
+2019-09-02 18:54:21,116 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 男(String), 080901201901(String)
+2019-09-02 18:54:21,117 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 5
+2019-09-02 18:54:21,119 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, student_id, dormitory_id from dormitory_registration WHERE dormitory_id = ? 
+2019-09-02 18:54:21,120 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 57(Integer)
+2019-09-02 18:54:21,121 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-02 18:54:21,121 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: insert into dormitory_registration (student_id, dormitory_id) values ( ?, ? ) 
+2019-09-02 18:54:21,122 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 1938050102(String), 57(Integer)
+2019-09-02 18:54:21,126 DEBUG (BaseJdbcLogger.java:143)- <==    Updates: 1

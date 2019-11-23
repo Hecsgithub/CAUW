@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.he.dao.RoleMapper" >
+
+    <resultMap id="BaseResultMap" type="com.he.po.Role" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="role_id" property="roleId" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, role_id, name
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from role
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from role
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insert" parameterType="com.he.po.Role" >
+        insert into role (id, role_id, name
+            )
+        values (#{id,jdbcType=INTEGER}, #{roleId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}
+            )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.he.po.Role" >
+        insert into role
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="roleId != null" >
+                role_id,
+            </if>
+            <if test="name != null" >
+                name,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="roleId != null" >
+                #{roleId,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null" >
+                #{name,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.he.po.Role" >
+        update role
+        <set >
+            <if test="roleId != null" >
+                role_id = #{roleId,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null" >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.he.po.Role" >
+        update role
+        set role_id = #{roleId,jdbcType=VARCHAR},
+            name = #{name,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    
+<!--     1.根据用户编号查询角色信息 -->
+   
+    <select id="selectRoleByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    	select a.id, a.role_id, a.name
+    	from role as a,user_role as b
+    	where a.id=b.role_id and b.user_id=#{user_id}
+    </select>
+    
+ <!--     2.新增角色以批量方式-->
+
+
+   <insert id="insertListRole" parameterType="java.util.List" >
+	insert
+	into role( role_id, name)
+	values
+	<foreach collection="list" item="item" index="index"
+		separator=",">
+ 
+		 ( #{item.roleId,jdbcType=VARCHAR}, #{item.name,jdbcType=VARCHAR})
+		 
+		 
+	</foreach>
+</insert>
+    
+    
+<!--    3.批量删除角色 -->
+     
+    <delete id="deleteListRole" parameterType="java.util.List" >
+    delete from role where id in
+    <foreach collection="list" item="item" open="(" close=")" separator=",">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+    </delete>
+
+    
+    
+<!--  4.批量修改角色-->
+    
+	<update id="updateListRole" parameterType="java.util.List">
+	
+    <foreach collection="list" item="item" index="index" open="" close="" separator=",">
+       update role
+        set role_id = #{item.roleId,jdbcType=VARCHAR},
+            name = #{item.name,jdbcType=VARCHAR}
+        where id = #{item.id,jdbcType=INTEGER}
+    </foreach>         		
+	</update> 
+ 
+<!-- 5.获取角色信息，若无参数则获取所有 -->
+
+    <select id="selectAllRole" resultMap="BaseResultMap" parameterType="com.he.po.Role" >
+        select 
+        <include refid="Base_Column_List" />
+        from role       
+		<trim prefix="WHERE (" suffix=")" prefixOverrides="AND |OR ">
+		 <if test="name != null and name !='' " >
+          and   name=#{name,jdbcType=VARCHAR} 
+            </if>
+            <if test="roleId != null and roleId!=''" >
+         and    role_id=#{roleId,jdbcType=VARCHAR}
+            </if>
+		</trim>
+    </select>
+    
+<!--    6.查重复  -->
+	<select id="selectHasTwoRole" resultMap="BaseResultMap" parameterType="com.he.po.Role" >
+        select 
+        <include refid="Base_Column_List" />
+        from role       
+		<trim prefix="WHERE (" suffix=")" prefixOverrides="AND |OR ">
+		 <if test="name != null and name !='' " >
+          and   name=#{name,jdbcType=VARCHAR} 
+            </if>
+            <if test="roleId != null and roleId!=''" >
+         and    role_id=#{roleId,jdbcType=VARCHAR}
+            </if>
+		</trim>
+		limit 1
+    </select>
+		
+
+
+</mapper>

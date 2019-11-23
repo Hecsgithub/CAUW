@@ -1,0 +1,12 @@
+2019-09-24 19:46:32,319 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select COUNT(student_status.id) from student_status left join class on student_status.class_id=class.class_id left join major on class.major_id=major.major_id left join department on major.department_id=department.department_id left join dept on department.dept_id=dept.dept_id WHERE student_status.student_id in ( SELECT pay.student_id from pay WHERE pay.remarks = ? ) 
+2019-09-24 19:46:32,317 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, dept_id, name, director from dept where name!='教务处' and name!='舍管科' 
+2019-09-24 19:46:32,320 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 19:46:32,320 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 绿色通道(String)
+2019-09-24 19:46:32,321 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 3
+2019-09-24 19:46:32,326 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-24 19:46:32,329 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select COUNT(student_status.id) from student_status left join class on student_status.class_id=class.class_id left join major on class.major_id=major.major_id left join department on major.department_id=department.department_id left join dept on department.dept_id=dept.dept_id WHERE student_status.student_id in ( SELECT pay.student_id from pay WHERE pay.remarks = ? ) 
+2019-09-24 19:46:32,330 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 正常缴费(String)
+2019-09-24 19:46:32,331 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-24 19:46:32,332 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select COUNT(student_status.id) from student_status left join class on student_status.class_id=class.class_id left join major on class.major_id=major.major_id left join department on major.department_id=department.department_id left join dept on department.dept_id=dept.dept_id WHERE student_status.student_id not in ( SELECT pay.student_id from pay ) 
+2019-09-24 19:46:32,332 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 19:46:32,333 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1

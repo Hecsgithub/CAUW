@@ -1,0 +1,17 @@
+2019-09-02 18:51:10,886 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select a.id,a.basic_id, a.student_id, a.class_id from student_status as a ,student_basic as b where a.basic_id=b.id and b.ID_number=? limit 1 
+2019-09-02 18:51:10,894 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 450803199804126(String)
+2019-09-02 18:51:10,898 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-02 18:51:10,899 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19002(String)
+2019-09-02 18:51:10,902 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-02 18:51:10,905 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, class_id, name, director, grade, major_id from class where class_id = ? 
+2019-09-02 18:51:10,908 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 080901201901(String)
+2019-09-02 18:51:10,911 DEBUG (BaseJdbcLogger.java:143)- ======>  Preparing: select id, major_id, name, price, department_id from major where major_id = ? 
+2019-09-02 18:51:10,912 DEBUG (BaseJdbcLogger.java:143)- ======> Parameters: 080901(String)
+2019-09-02 18:51:10,915 DEBUG (BaseJdbcLogger.java:143)- <======      Total: 1
+2019-09-02 18:51:10,916 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-02 18:51:10,917 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-02 18:51:10,918 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select dormitory.id, dormitory.dong, dormitory.floor,dormitory.room, dormitory.sex, dormitory.number,dormitory.rent from dormitory ,dormitory_registration where dormitory.id=dormitory_registration.dormitory_id and dormitory_registration.student_id = ? 
+2019-09-02 18:51:10,920 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 1938050101(String)
+2019-09-02 18:51:10,923 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-02 18:51:10,936 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select a.id,a.basic_id, a.student_id, a.class_id from student_status as a ,student_basic as b where a.basic_id=b.id and b.ID_number=? limit 1 
+2019-09-02 18:51:10,939 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 450803199804126(String)

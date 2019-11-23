@@ -1,0 +1,16 @@
+2019-09-24 18:45:55,665 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select teacher.id,teacher.teacher_id, teacher.password, teacher.name, teacher.sex, teacher.phone, teacher.email, teacher.adress FROM teacher LEFT JOIN users on teacher.teacher_id=users.username LEFT JOIN user_role on users.id=user_role.user_id LEFT JOIN role on user_role.role_id=role.id where role.name=? 
+2019-09-24 18:45:55,667 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 班主任(String)
+2019-09-24 18:45:55,673 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select a.id, a.role_id, a.name from role as a,user_role as b where a.id=b.role_id and b.user_id=? 
+2019-09-24 18:45:55,674 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 2019728(Integer)
+2019-09-24 18:45:55,675 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 0
+2019-09-24 18:45:55,678 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select a.id, a.role_id, a.name from role as a,user_role as b where a.id=b.role_id and b.user_id=? 
+2019-09-24 18:45:55,679 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 2019729(Integer)
+2019-09-24 18:45:55,681 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 0
+2019-09-24 18:45:55,682 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select a.id, a.role_id, a.name from role as a,user_role as b where a.id=b.role_id and b.user_id=? 
+2019-09-24 18:45:55,683 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 2019730(Integer)
+2019-09-24 18:45:55,684 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 0
+2019-09-24 18:45:55,685 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select a.id, a.role_id, a.name from role as a,user_role as b where a.id=b.role_id and b.user_id=? 
+2019-09-24 18:45:55,685 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 2019731(Integer)
+2019-09-24 18:45:55,686 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 0
+2019-09-24 18:45:55,687 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select a.id, a.role_id, a.name from role as a,user_role as b where a.id=b.role_id and b.user_id=? 
+2019-09-24 18:45:55,687 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 2019732(Integer)

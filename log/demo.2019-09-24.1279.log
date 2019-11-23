@@ -1,0 +1,14 @@
+2019-09-24 19:01:58,273 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, student_id, state from apply WHERE state= ? 
+2019-09-24 19:01:58,275 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 未审核(String)
+2019-09-24 19:01:58,283 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-24 19:01:59,106 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, dept_id, name, director from dept where name!='教务处' and name!='舍管科' 
+2019-09-24 19:01:59,108 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 19:01:59,109 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select COUNT(student_status.id) from student_status left join class on student_status.class_id=class.class_id left join major on class.major_id=major.major_id left join department on major.department_id=department.department_id left join dept on department.dept_id=dept.dept_id WHERE student_status.student_id in ( SELECT pay.student_id from pay WHERE pay.remarks = ? ) 
+2019-09-24 19:01:59,116 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 绿色通道(String)
+2019-09-24 19:01:59,110 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 3
+2019-09-24 19:01:59,132 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-24 19:01:59,133 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select COUNT(student_status.id) from student_status left join class on student_status.class_id=class.class_id left join major on class.major_id=major.major_id left join department on major.department_id=department.department_id left join dept on department.dept_id=dept.dept_id WHERE student_status.student_id in ( SELECT pay.student_id from pay WHERE pay.remarks = ? ) 
+2019-09-24 19:01:59,134 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 正常缴费(String)
+2019-09-24 19:01:59,134 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-24 19:01:59,135 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select COUNT(student_status.id) from student_status left join class on student_status.class_id=class.class_id left join major on class.major_id=major.major_id left join department on major.department_id=department.department_id left join dept on department.dept_id=dept.dept_id WHERE student_status.student_id not in ( SELECT pay.student_id from pay ) 
+2019-09-24 19:01:59,135 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 

@@ -1,0 +1,6 @@
+2019-10-26 11:39:31,021 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select dormitory.id, dormitory.dong, dormitory.floor, dormitory.room, dormitory.sex, dormitory.number, dormitory.rent, dormitory.hasnumber from dormitory LEFT JOIN dormitory_allocation on dormitory_allocation.dormitory_id = dormitory.id LEFT JOIN class on dormitory_allocation.class_id=class.class_id LEFT JOIN major on class.major_id=major.major_id WHERE dong = ? and floor = ? group by dormitory.dong,dormitory.floor,dormitory.room 
+2019-10-26 11:39:31,024 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 1A(String), 2(Integer)
+2019-10-26 11:39:31,030 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 50
+2019-10-26 11:39:35,352 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select dormitory.id, dormitory.dong, dormitory.floor, dormitory.room, dormitory.sex, dormitory.number, dormitory.rent, dormitory.hasnumber from dormitory LEFT JOIN dormitory_allocation on dormitory_allocation.dormitory_id = dormitory.id LEFT JOIN class on dormitory_allocation.class_id=class.class_id LEFT JOIN major on class.major_id=major.major_id WHERE dong = ? and floor = ? group by dormitory.dong,dormitory.floor,dormitory.room 
+2019-10-26 11:39:35,358 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 1A(String), 3(Integer)
+2019-10-26 11:39:35,362 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 50

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.he.dao.ApplyMapper" >
+
+    <resultMap id="BaseResultMap" type="com.he.po.Apply" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="student_id" property="studentId" jdbcType="VARCHAR" />
+        <result column="state" property="state" jdbcType="VARCHAR" />
+        <association property="ss" column="student_id" javaType="com.he.po.StudentStatus"     
+        select="com.he.dao.StudentStatusMapper.selectByPrimaryKey"></association>
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, student_id, state
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from apply
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from apply
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insert" parameterType="com.he.po.Apply" >
+        insert into apply (id, student_id, state
+            )
+        values (#{id,jdbcType=INTEGER}, #{studentId,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}
+            )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.he.po.Apply" >
+        insert into apply
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="studentId != null" >
+                student_id,
+            </if>
+            <if test="state != null" >
+                state,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="studentId != null" >
+                #{studentId,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null" >
+                #{state,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.he.po.Apply" >
+        update apply
+        <set >
+            <if test="studentId != null" >
+                student_id = #{studentId,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null" >
+                state = #{state,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.he.po.Apply" >
+        update apply
+        set student_id = #{studentId,jdbcType=VARCHAR},
+            state = #{state,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    
+<!--     //1插入一个请求 -->
+<!--     int insertApply(Apply apply); -->
+    <insert id="insertApply" parameterType="com.he.po.Apply" >
+        insert into apply
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="studentId != null" >
+                student_id,
+            </if>
+            <if test="state != null" >
+                state,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="studentId != null" >
+                #{studentId,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null" >
+                #{state,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    
+    
+    
+    
+<!--     //2修改一个请求 -->
+<!--     int updateApply(Apply apply); -->
+    <update id="updateApply" parameterType="com.he.po.Apply" >
+        update apply
+        <set >
+            <if test="studentId != null" >
+                student_id = #{studentId,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null" >
+                state = #{state,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    
+<!--     //3删除一个请求 -->
+<!--     int deleteApply(Apply apply); -->
+    <delete id="deleteApply" parameterType="com.he.po.Apply" >
+        delete from apply
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    
+    
+<!--     //4查询请求 -->
+<!--     int selectApply(Apply apply); -->
+	<select id="selectApply" resultMap="BaseResultMap" parameterType="com.he.po.Apply" >
+        select 
+        <include refid="Base_Column_List" />
+        from apply
+        <where>
+        	<if test="id != null" >
+             and  id= #{id,jdbcType=INTEGER}
+            </if>
+            <if test="studentId != null" >
+              and student_id= #{studentId,jdbcType=VARCHAR}
+            </if>
+            <if test="state != null" >
+              and state= #{state,jdbcType=VARCHAR}
+            </if>
+        </where>
+      
+    </select>
+
+</mapper>

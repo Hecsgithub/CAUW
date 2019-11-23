@@ -1,0 +1,10 @@
+2019-09-02 19:05:23,943 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select m1.`id`,m1.`path`,m1.`component`,m1.`iconCls`,m1.`name`,m1.`requireAuth`,m2.`component` as component2,m2.`iconCls` as iconCls2,m2.`keepAlive` as keepAlive2,m2.`name` as name2,m2.`path` as path2,m2.`requireAuth` as requireAuth2 from menu m1,menu m2 where m1.`id`=m2.`parentId` and m1.`id`!=1 and m2.`id` in (select mr.`menu_id` from user_role u_r,menu_role mr where u_r.`role_id`=mr.`role_id` and u_r.`user_id`=?) and m2.`enabled`=true order by m1.`id`,m2.`id` 
+2019-09-02 19:05:23,951 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 5024(Integer)
+2019-09-02 19:05:23,967 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 3
+2019-09-02 19:05:24,087 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select m1.`id`,m1.`path`,m1.`component`,m1.`iconCls`,m1.`name`,m1.`requireAuth`,m2.`component` as component2,m2.`iconCls` as iconCls2,m2.`keepAlive` as keepAlive2,m2.`name` as name2,m2.`path` as path2,m2.`requireAuth` as requireAuth2 from menu m1,menu m2 where m1.`id`=m2.`parentId` and m1.`id`!=1 and m2.`id` in (select mr.`menu_id` from user_role u_r,menu_role mr where u_r.`role_id`=mr.`role_id` and u_r.`user_id`=?) and m2.`enabled`=true order by m1.`id`,m2.`id` 
+2019-09-02 19:05:24,090 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 5024(Integer)
+2019-09-02 19:05:24,096 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 3
+2019-09-02 19:05:24,713 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where ID_number=? limit 1 
+2019-09-02 19:05:24,714 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select a.id,a.basic_id, a.student_id, a.class_id from student_status as a ,student_basic as b where a.basic_id=b.id and b.ID_number=? limit 1 
+2019-09-02 19:05:24,714 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 450803199804128(String)
+2019-09-02 19:05:24,714 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 450803199804128(String)

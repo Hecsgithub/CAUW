@@ -1,0 +1,9 @@
+2019-09-24 19:46:52,559 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, department_id, name, director, dept_id from department WHERE dept_id=? 
+2019-09-24 19:46:52,562 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: lg(String)
+2019-09-24 19:46:52,563 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 4
+2019-09-24 19:46:52,580 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select COUNT(student_status.id) from student_status left join class on student_status.class_id=class.class_id left join major on class.major_id=major.major_id left join department on major.department_id=department.department_id left join dept on department.dept_id=dept.dept_id WHERE dept.dept_id = ? and student_status.student_id in ( SELECT pay.student_id from pay WHERE pay.remarks = ? ) 
+2019-09-24 19:46:52,583 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: lg(String), 绿色通道(String)
+2019-09-24 19:46:52,586 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-24 19:46:52,587 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select COUNT(student_status.id) from student_status left join class on student_status.class_id=class.class_id left join major on class.major_id=major.major_id left join department on major.department_id=department.department_id left join dept on department.dept_id=dept.dept_id WHERE dept.dept_id = ? and student_status.student_id in ( SELECT pay.student_id from pay WHERE pay.remarks = ? ) 
+2019-09-24 19:46:52,588 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: lg(String), 正常缴费(String)
+2019-09-24 19:46:52,590 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1

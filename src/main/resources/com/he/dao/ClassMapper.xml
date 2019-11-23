@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.he.dao.ClassMapper" >
+
+    <resultMap id="BaseResultMap" type="com.he.po.Class" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="class_id" property="classId" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="director" property="director" jdbcType="VARCHAR" />
+        <result column="grade" property="grade" jdbcType="VARCHAR" />
+        <result column="major_id" property="majorId" jdbcType="VARCHAR" />
+    </resultMap>
+
+	  <resultMap id="BaseResultMap1" type="com.he.po.Class" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="class_id" property="classId" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="director" property="director" jdbcType="VARCHAR" />
+        <result column="grade" property="grade" jdbcType="VARCHAR" />
+        <result column="major_id" property="majorId" jdbcType="VARCHAR" />
+        <association property="m" column="major_id" javaType="com.he.po.Major"     
+        select="com.he.dao.MajorMapper.selectByPrimaryKey"></association>
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, class_id, name, director, grade, major_id
+    </sql>
+
+<!-- 7. -->
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap1" parameterType="java.lang.String" >
+        select 
+        <include refid="Base_Column_List" />
+        from class
+        <where>
+              and  class_id = #{class_id,jdbcType=VARCHAR}
+        </where>
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from class
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insert" parameterType="com.he.po.Class" >
+        insert into class (id, class_id, name, 
+            director, grade, major_id
+            )
+        values (#{id,jdbcType=INTEGER}, #{classId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+            #{director,jdbcType=VARCHAR}, #{grade,jdbcType=VARCHAR}, #{majorId,jdbcType=VARCHAR}
+            )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.he.po.Class" >
+        insert into class
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="classId != null" >
+                class_id,
+            </if>
+            <if test="name != null" >
+                name,
+            </if>
+            <if test="director != null" >
+                director,
+            </if>
+            <if test="grade != null" >
+                grade,
+            </if>
+            <if test="majorId != null" >
+                major_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="classId != null" >
+                #{classId,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null" >
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="director != null" >
+                #{director,jdbcType=VARCHAR},
+            </if>
+            <if test="grade != null" >
+                #{grade,jdbcType=VARCHAR},
+            </if>
+            <if test="majorId != null" >
+                #{majorId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.he.po.Class" >
+        update class
+        <set >
+            <if test="classId != null" >
+                class_id = #{classId,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null" >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="director != null" >
+                director = #{director,jdbcType=VARCHAR},
+            </if>
+            <if test="grade != null" >
+                grade = #{grade,jdbcType=VARCHAR},
+            </if>
+            <if test="majorId != null" >
+                major_id = #{majorId,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.he.po.Class" >
+        update class
+        set class_id = #{classId,jdbcType=VARCHAR},
+            name = #{name,jdbcType=VARCHAR},
+            director = #{director,jdbcType=VARCHAR},
+            grade = #{grade,jdbcType=VARCHAR},
+            major_id = #{majorId,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    
+<!--     1.初始化班级 -->
+    <insert id="insertIntClass" parameterType="java.util.List" >
+    	insert
+    	into class(class_id,name,grade,major_id)
+    	values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.classId,jdbcType=VARCHAR},
+			#{item.name,jdbcType=VARCHAR},
+			#{item.grade,jdbcType=VARCHAR},
+            #{item.majorId,jdbcType=VARCHAR})
+		</foreach>
+    </insert>
+    
+<!--     2.获取专业名称及编号 -->
+    <select id="selectMajorList" parameterType="com.he.po.Class"  resultType="com.he.po.Major">
+    	select distinct major.id,major.major_id as majorId,major.name,major.price,major.department_id as departmentId
+    	from class, major 
+    	<where>
+    		class.major_id=major.major_id
+    		<if test="classId != null" >
+             and    class.class_id = #{classId,jdbcType=VARCHAR}
+            </if>
+            <if test="name != null" >
+             and   class.name = #{name,jdbcType=VARCHAR}
+            </if>
+            <if test="director != null" >
+              and  class.director = #{director,jdbcType=VARCHAR}
+            </if>
+            <if test="grade != null" >
+             and   class.grade = #{grade,jdbcType=VARCHAR}
+            </if>
+            <if test="majorId != null" >
+             and   class.major_id = #{majorId,jdbcType=VARCHAR}
+            </if>
+    	</where>
+    	 
+    	
+    </select>
+
+<!--   3.获取班级根据专业编号   -->
+	<select id="selectClassByMajorID" parameterType="java.lang.String" resultMap="BaseResultMap">
+    	select
+    	 id,class_id,name,director,grade,major_id
+        from class
+        where major_id = #{majorId,jdbcType=VARCHAR}
+    </select>	
+	
+<!--    4.获取所有班级  -->    
+    <select id="getAllClass"  resultType="com.he.viewpo.NewClass" parameterType="com.he.viewpo.NewClass">
+    	 select class.*,major.name as major,department.name as department,dept.name as dept
+        from class left join major on class.major_id=major.major_id
+        left join department on major.department_id=department.department_id
+        left join dept on department.dept_id=dept.dept_id 
+        <where>
+        	<if test="director != null and director!='' " >
+              and  class.director = #{director,jdbcType=VARCHAR}
+            </if>
+            
+            <if test="major != null and major != '' " >
+              and  major.name = #{major,jdbcType=VARCHAR}
+            </if>
+            
+            <if test="department != null and department !='' " >
+              and  department.name = #{department,jdbcType=VARCHAR}
+            </if>
+            
+            <if test="dept != null and dept !='' " >
+              and  dept.name = #{dept,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    
+<!--  5.修改某班级班主任   updatedirector(String tid,String id)	 -->
+     <update id="updatedirector" parameterType="java.lang.String" >
+        update class
+        <set >
+            <if test="id != null and id!=''" >
+                director = #{id,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{tid,jdbcType=INTEGER}
+    </update>
+    
+<!--    6.根据参数删除班级 -->
+<!--     int deleteClass(Class c);  -->
+    <delete id="deleteClass" parameterType="com.he.po.Class" >
+        delete from class
+        <where>
+        	 <if test="id != null and id!=''" >
+             	and id=#{id,jdbcType=INTEGER}
+            </if>
+            <if test="classId != null and classId!=''" >
+                 and class_id=#{classId,jdbcType=VARCHAR}
+            </if>
+            <if test="name != null and name !=''"  >
+                 and name=#{name,jdbcType=VARCHAR}
+            </if>
+            <if test="director != null and director !=''" >
+                 and director=#{director,jdbcType=VARCHAR}
+            </if>
+            <if test="grade != null and grade !=''" >
+                 and grade=#{grade,jdbcType=VARCHAR}
+            </if>
+            <if test="majorId != null and majorId !=''" >
+                 and major_id=#{majorId,jdbcType=VARCHAR}
+            </if>
+        </where>
+        
+    </delete>
+    
+<!--     8. 查询所有班级-->
+	<select id="selectAllClass" resultMap="BaseResultMap1" parameterType="com.he.po.Class" >
+        select 
+        <include refid="Base_Column_List" />
+        from class
+       	<where>
+        	 <if test="id != null and id!=''" >
+             	and id=#{id,jdbcType=INTEGER}
+            </if>
+            <if test="classId != null and classId!=''" >
+                 and class_id=#{classId,jdbcType=VARCHAR}
+            </if>
+            <if test="name != null and name !=''"  >
+                 and name=#{name,jdbcType=VARCHAR}
+            </if>
+            <if test="director != null and director !=''" >
+                 and director=#{director,jdbcType=VARCHAR}
+            </if>
+            <if test="grade != null and grade !=''" >
+                 and grade=#{grade,jdbcType=VARCHAR}
+            </if>
+            <if test="majorId != null and majorId !=''" >
+                 and major_id=#{majorId,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    
+    
+<!--     //9.查该班级的专业中所有班级最大的编号的班级 -->
+<!--     Class selectMajorMaxClass(String classId); -->
+    <select id="selectMajorMaxClass" parameterType="java.lang.String" resultMap="BaseResultMap">
+    	select c.* 
+    	from class as c
+    	where c.id=
+    	(
+	    	select max(a.id)
+	    	from class as a 
+	    	where a.major_id in 
+		    	(
+					select b.major_id FROM class as b where b.class_id=#{classId,jdbcType=VARCHAR}	
+				)
+		)
+    </select>
+    
+    <!-- 10. -->
+    <select id="selectByClassId" resultMap="BaseResultMap1" parameterType="java.lang.String" >
+        select 
+        <include refid="Base_Column_List" />
+        from class
+        <where>
+        	<if test="classId != null and classId!=''" >
+              and  class_id = #{classId,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,11 @@
+2019-10-26 11:39:17,392 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 3(Integer)
+2019-10-26 11:39:17,392 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 2019716(String)
+2019-10-26 11:39:17,403 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select a.id, a.role_id, a.name from role as a,user_role as b where a.id=b.role_id and b.user_id=? 
+2019-10-26 11:39:17,404 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 2019716(Integer)
+2019-10-26 11:39:17,406 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 3
+2019-10-26 11:39:17,407 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 0
+2019-10-26 11:39:17,408 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-10-26 11:39:19,847 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, class_id, name, director, grade, major_id from class 
+2019-10-26 11:39:19,849 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select DISTINCT dormitory.dong from dormitory where dormitory.sex=? 
+2019-10-26 11:39:19,850 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-10-26 11:39:19,850 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 男(String)

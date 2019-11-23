@@ -1,0 +1,3 @@
+2019-10-28 00:53:10,672 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select dormitory.id, dormitory.dong, dormitory.floor, dormitory.room, dormitory.sex, dormitory.number, dormitory.rent, dormitory.hasnumber from dormitory LEFT JOIN dormitory_allocation on dormitory_allocation.dormitory_id = dormitory.id LEFT JOIN class on dormitory_allocation.class_id=class.class_id LEFT JOIN major on class.major_id=major.major_id WHERE dong = ? and floor = ? group by dormitory.dong,dormitory.floor,dormitory.room 
+2019-10-28 00:53:10,674 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 2A(String), 2(Integer)
+2019-10-28 00:53:10,679 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 50

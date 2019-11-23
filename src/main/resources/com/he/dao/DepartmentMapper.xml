@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.he.dao.DepartmentMapper" >
+
+    <resultMap id="BaseResultMap" type="com.he.po.Department" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="department_id" property="departmentId" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="director" property="director" jdbcType="VARCHAR" />
+        <result column="dept_id" property="deptId" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, department_id, name, director, dept_id
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from department
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from department
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insert" parameterType="com.he.po.Department" >
+        insert into department (id, department_id, name, 
+            director, dept_id)
+        values (#{id,jdbcType=INTEGER}, #{departmentId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+            #{director,jdbcType=VARCHAR}, #{deptId,jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.he.po.Department" >
+        insert into department
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="departmentId != null" >
+                department_id,
+            </if>
+            <if test="name != null" >
+                name,
+            </if>
+            <if test="director != null" >
+                director,
+            </if>
+            <if test="deptId != null" >
+                dept_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="departmentId != null" >
+                #{departmentId,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null" >
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="director != null" >
+                #{director,jdbcType=VARCHAR},
+            </if>
+            <if test="deptId != null" >
+                #{deptId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.he.po.Department" >
+        update department
+        <set >
+            <if test="departmentId != null" >
+                department_id = #{departmentId,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null" >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="director != null" >
+                director = #{director,jdbcType=VARCHAR},
+            </if>
+            <if test="deptId != null" >
+                dept_id = #{deptId,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.he.po.Department" >
+        update department
+        set department_id = #{departmentId,jdbcType=VARCHAR},
+            name = #{name,jdbcType=VARCHAR},
+            director = #{director,jdbcType=VARCHAR},
+            dept_id = #{deptId,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    
+<!--    1.查所有系信息  -->
+    <select id="getAllDepartement" resultMap="BaseResultMap" parameterType="com.he.po.Department" >
+        select 
+        <include refid="Base_Column_List" />
+        from department
+        <where>
+        	<if test="id != null and  id !=''">
+        	 and id = #{id,jdbcType=INTEGER}
+        	</if>
+        	<if test="departmentId != null and  departmentId !=''" >
+              and  department_id = #{departmentId,jdbcType=VARCHAR}
+            </if>
+            <if test="name != null and name !=''" >
+              and  name = #{name,jdbcType=VARCHAR}
+            </if>
+            <if test="director != null and director !=''" >
+              and  director = #{director,jdbcType=VARCHAR}
+            </if>
+            <if test="deptId != null and deptId !=''" >
+              and  dept_id=#{deptId,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    
+    
+</mapper>

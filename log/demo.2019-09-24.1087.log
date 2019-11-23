@@ -1,0 +1,16 @@
+2019-09-24 18:45:07,814 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 23
+2019-09-24 18:45:07,847 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, dept_id, name, director from dept where name!='教务处' and name!='舍管科' 
+2019-09-24 18:45:07,848 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 18:45:07,849 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 3
+2019-09-24 18:45:55,653 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, major_id, name, price, department_id from major 
+2019-09-24 18:45:55,654 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 18:45:55,655 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 16
+2019-09-24 18:45:55,656 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, department_id, name, director, dept_id from department 
+2019-09-24 18:45:55,658 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 18:45:55,658 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select class.*,major.name as major,department.name as department,dept.name as dept from class left join major on class.major_id=major.major_id left join department on major.department_id=department.department_id left join dept on department.dept_id=dept.dept_id 
+2019-09-24 18:45:55,659 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 18:45:55,661 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 10
+2019-09-24 18:45:55,661 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 23
+2019-09-24 18:45:55,662 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, dept_id, name, director from dept where name!='教务处' and name!='舍管科' 
+2019-09-24 18:45:55,662 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 18:45:55,664 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 3

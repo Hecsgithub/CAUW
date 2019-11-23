@@ -1,0 +1,42 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/CAUW?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC&allowMultiQueries=true  
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  security:
+    user:
+      name: sang
+      password: 123
+      roles:
+      - admin 
+      - user
+  rabbitmq:
+        addresses: 127.0.0.1
+        username: guest
+        password: guest
+        virtual-host: /
+        port: 15672
+
+logging:
+  config: classpath:logback-boot.xml 
+   
+alipay:
+    gatewayUrl: https://openapi.alipaydev.com/gateway.do      #支付宝网关
+    appid: 2016100100642175            #支付宝APPID
+    #用户私钥
+    appPrivateKey: MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC9IIQEa16SlrVRAwslToEwwL4T/fa6/cAqCS+e2TSb2TFZ+DnVNyCCZfBomMJnnkylm671byXLvVyKcM5HlfUHRtDZjluk4YViPBznjpAyoGFfhFQQd7GuYgPCyz0aE27K7bZjyyDUflIiLtBig3Sxsfhiuqbvqg1DFchFUuBKK20d6/nsGZaKjTIBJGDvtyUnhG7LnDXsxqGYJClScRx1u+0APmrgtn9ohvmAiI24J6AQo7wQrMoIlCIS0HBIo30U+vsMief6KatwNUBtIYLRofUz3/bAGXAf8cW9nMiSHoXNXcqhzZHCegkZwIJyaG6Z3ZzePv18JLpzj3wO9oj1AgMBAAECggEAIZxoudxXB1gvSwFudqfX/9ERNr5YnezAvPe69dEGL3hO8/1QUdslNOdm7T/QtNeGKZxcYJPrNKUnkBbyIfi9fhiQv0k0cj3+FXI3dNN6PvUPuQjsY6zR7/rNTk4OQtcXRosucdfEst7sO9T0Bb30/CtzyCAB0O/4wWZanC9ZWvTEiH3tWj7lY6B1u/QsEIARatmNxw66qXxNiePEIO5gYoxsdw5QXfeIucdFdnBbhvr50Ld7oQEyThKOUC8Tcq9kYU3qwf7t3XqmQGw90QtXkl4lNQVbn64kapcGGuWjl05fNvWgZgr5OZL285ykZCHYmhXEgRqfgDeogyqvHHpu1QKBgQDhsBULM9GnjH78ltg1eWO+W/F2dLHlIBcQauMK1fEdYasm9s4yta9K4muO4pmW+Gf6YNfo9k6pyzHRFgBAYzzH1Kx2Kq5rHhibDmfYESEDVQ7x/SDuQzFCcqLrSlJIAeUR9DJu+V01vY+x3WhnYTn441a9zOj8xbCfID2Bd0iaTwKBgQDWh1kfd60z+dETGHJIVDtmuyfew3Dh/n44v1N+b27NGQPkn1L/sg2KycLl6Jpoa/M9EbAqkoOBx9xL3zg/gdBR7j/KidtQoIij/12RkMAPtAOJfEc6fcqRweS9s87EPZ/u81Q1+D1h1PN5DNUgnGtDGENsjiKUF2znPKeVop0LewKBgQDArGDq1WxxjCKFZgpjbKTYyQnVxT5yi/jkzTvT7l4QZWeGtkHHTRC/75k/vPi+yIeMW804V79EefKnvA6u6YnkWA58O2f4jxMWnS/OaKE0hRNjSGUqxDZzsgagtSyVyPhVYZME5uLKlHDuukT9rSWe9AcDtsJZujRVRWL8+mcDRQKBgQDN0/iHf4yXxMV7W8YybVa83y6Gxd+lhUZXbgJO2d1mPO0GSnMYzx29Ho23hq+3JnOvESyD/CTevQI5bYcLL6LPKRbdXd0lg5D2QEnnIwmTR3TpUWsJzK0xoeW0uTLWCAZN/fq6+VzzY5zidJR8AHfNXRc7rTex/LPJPOHRaL7ixwKBgAXkVMC+VJ15D17iBniRLf60Nj8BnzGWqOkoptmNh7f4LW7390QVLsCs54TtC2xK4OSqXLCo5uF9vd24fuWzLvN8GxmgynfEGa0LKnIUxIosT+1oddCYEgmeEknz56usB4sHeRT7+HupT8wit4IwmXYTMFEz8Po2iC9zhA4MhWJy     
+      #支付宝公钥  
+    alipayPublicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnOyi2qkhfLHGDyJsFMQSS4ARA6WZcYOjDTKx2nbe6UtnULj96D3+ZSf94QZOQoTlDO6OqKKib4bHH4/FKsMCPDgj3TwZcGHH4HQ+rcTGUQr740B6PJvWnmgOYP/9pZNfaNQvVj8HaoOgAY6Y6ZXreiZ+Wg4Icb8YcT7IC6aLJUpAupLzh8ubgRiqDOKZkc6cN6bQYX7bhlCD0uWT/EvfBLiFD/iBvzTMwVUejhz/ReYYqIrb0Y0e6QTMA5ADKQWmXZvz4bqO9ScklP7cq7ECrQuTShfxftZ8gtLTFS/9y+BmNwbZ/ePusP7v1xKP+aeeYkcYDqe+vFarE3e4ECTLNQIDAQAB
+    returnUrl:   http://kq5azn.natappfree.cc/index.html#/stu/studentpay   #支付成功跳转的url
+    notifyUrl:   http://kq5azn.natappfree.cc/alipay/page/notify       #异步跳转url
+
+#存放上传下载的本地文件夹路径
+localfile: E:\\STSpacket\\cauw\\src\\main\\resources\\applyfiles\\  
+
+#查看路径
+showfile: E:/STSpacket/cauw/src/main/resources/applyfiles/ 
+  
+    

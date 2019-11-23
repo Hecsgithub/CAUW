@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.he.dao.DeptMapper" >
+
+    <resultMap id="BaseResultMap" type="com.he.po.Dept" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="dept_id" property="deptId" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="director" property="director" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, dept_id, name, director
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from dept
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from dept
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insert" parameterType="com.he.po.Dept" >
+        insert into dept (id, dept_id, name, 
+            director)
+        values (#{id,jdbcType=INTEGER}, #{deptId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+            #{director,jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.he.po.Dept" >
+        insert into dept
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="deptId != null" >
+                dept_id,
+            </if>
+            <if test="name != null" >
+                name,
+            </if>
+            <if test="director != null" >
+                director,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="deptId != null" >
+                #{deptId,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null" >
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="director != null" >
+                #{director,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.he.po.Dept" >
+        update dept
+        <set >
+            <if test="deptId != null" >
+                dept_id = #{deptId,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null" >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="director != null" >
+                director = #{director,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.he.po.Dept" >
+        update dept
+        set dept_id = #{deptId,jdbcType=VARCHAR},
+            name = #{name,jdbcType=VARCHAR},
+            director = #{director,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    
+<!--      //1.获取所有部门信息  不包括财务处部与舍管科-->
+<!--     List<Dept> getAllDept(); -->
+	<select id="getAllDept" resultMap="BaseResultMap"  >
+        select 
+        <include refid="Base_Column_List" />
+        from dept
+        where
+        name!='教务处' and name!='舍管科'
+    </select>
+    
+</mapper>

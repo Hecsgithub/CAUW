@@ -1,0 +1,12 @@
+2019-09-05 17:09:49,336 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-05 17:09:49,339 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select COUNT(student_status.id) from student_status left join class on student_status.class_id=class.class_id left join major on class.major_id=major.major_id left join department on major.department_id=department.department_id left join dept on department.dept_id=dept.dept_id WHERE student_status.student_id in (SELECT pay.student_id from pay) 
+2019-09-05 17:09:49,340 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-05 17:09:49,342 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-05 17:09:56,430 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, department_id, name, director, dept_id from department WHERE dept_id=? 
+2019-09-05 17:09:56,433 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: lg(String)
+2019-09-05 17:09:56,435 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 4
+2019-09-05 17:09:56,473 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select COUNT(student_status.id) from student_status left join class on student_status.class_id=class.class_id left join major on class.major_id=major.major_id left join department on major.department_id=department.department_id left join dept on department.dept_id=dept.dept_id WHERE dept.dept_id = ? and student_status.student_id not in (SELECT pay.student_id from pay) 
+2019-09-05 17:09:56,474 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: lg(String)
+2019-09-05 17:09:56,481 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-05 17:09:56,482 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select COUNT(student_status.id) from student_status left join class on student_status.class_id=class.class_id left join major on class.major_id=major.major_id left join department on major.department_id=department.department_id left join dept on department.dept_id=dept.dept_id WHERE dept.dept_id = ? and student_status.student_id in (SELECT pay.student_id from pay) 
+2019-09-05 17:09:56,482 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: lg(String)

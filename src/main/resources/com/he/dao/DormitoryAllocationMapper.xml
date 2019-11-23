@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.he.dao.DormitoryAllocationMapper" >
+
+    <resultMap id="BaseResultMap" type="com.he.po.DormitoryAllocation" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="class_id" property="classId" jdbcType="VARCHAR" />
+        <result column="dormitory_id" property="dormitoryId" jdbcType="INTEGER" />
+         <result column="number" property="number" jdbcType="INTEGER" />
+    </resultMap>
+    
+     <resultMap id="BaseResultMap1" type="com.he.po.DormitoryAllocation" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="class_id" property="classId" jdbcType="VARCHAR" />
+        <result column="dormitory_id" property="dormitoryId" jdbcType="INTEGER" />
+         <result column="number" property="number" jdbcType="INTEGER" />
+          <association property="dormitory" column="dormitory_id" javaType="com.he.po.Dormitory"     
+        select="com.he.dao.DormitoryMapper.selectByPrimaryKey"></association>
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, class_id, dormitory_id,number
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from dormitory_allocation
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from dormitory_allocation
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insert" parameterType="com.he.po.DormitoryAllocation" >
+        insert into dormitory_allocation (id, class_id, dormitory_id,number
+            )
+        values (#{id,jdbcType=INTEGER}, #{classId,jdbcType=VARCHAR}, #{dormitoryId,jdbcType=INTEGER}, #{number,jdbcType=INTEGER}
+            )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.he.po.DormitoryAllocation" >
+        insert into dormitory_allocation
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="classId != null" >
+                class_id,
+            </if>
+            <if test="dormitoryId != null" >
+                dormitory_id,
+            </if>
+            <if test="number != null" >
+                number,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="classId != null" >
+                #{classId,jdbcType=VARCHAR},
+            </if>
+            <if test="dormitoryId != null" >
+                #{dormitoryId,jdbcType=INTEGER},
+            </if>
+            <if test="number != null" >
+                 #{number,jdbcType=INTEGER}
+            </if>
+           
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.he.po.DormitoryAllocation" >
+        update dormitory_allocation
+        <set >
+            <if test="classId != null" >
+                class_id = #{classId,jdbcType=VARCHAR},
+            </if>
+            <if test="dormitoryId != null" >
+                dormitory_id = #{dormitoryId,jdbcType=INTEGER},
+            </if>
+            <if test="number != null" >
+                number = #{number,jdbcType=INTEGER}
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.he.po.DormitoryAllocation" >
+        update dormitory_allocation
+        set class_id = #{classId,jdbcType=VARCHAR},
+            dormitory_id = #{dormitoryId,jdbcType=INTEGER},
+            number = #{number,jdbcType=INTEGER}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    
+    <!--     //1.为某个班分配宿舍 -->
+	<insert id="insertDivideDormitory" parameterType="java.util.List">
+		 insert into 
+		 dormitory_allocation (class_id, dormitory_id,number)
+		 values
+		 <foreach collection="list" item="item" index="index"
+			separator=",">
+			(
+			#{item.classId,jdbcType=VARCHAR},
+			 #{item.dormitoryId,jdbcType=INTEGER},
+			 #{item.number,jdbcType=INTEGER}
+			 )
+		</foreach>
+	</insert>
+    
+<!--    //2.根据班级ID或者宿舍ID获取分配记录 -->
+<!--   	List<DormitoryAllocation> getDormitoryAllocationByDA(DormitoryAllocation da);     -->
+     <select id="getDormitoryAllocationByDA" resultMap="BaseResultMap1" parameterType="com.he.po.DormitoryAllocation" >
+        select 
+       dormitory_allocation.id, dormitory_allocation.class_id, dormitory_allocation.dormitory_id,dormitory_allocation.number
+        from dormitory_allocation,dormitory
+       <where>
+       		dormitory_allocation.dormitory_id=dormitory.id
+       		<if test="sex != null and sex !=''" >
+             and dormitory.sex=#{sex,jdbcType=VARCHAR}
+            </if>
+       		<if test="classId != null and classId !=''" >
+              and  class_id = #{classId,jdbcType=VARCHAR}
+            </if>
+            <if test="dormitoryId != null and dormitoryId !=0" >
+             and   dormitory_id = #{dormitoryId,jdbcType=INTEGER}
+            </if>
+                  
+       </where>
+        
+    </select>
+    
+<!--     //3.批量删除 -->
+<!--   	int deleteDormitoryAllocationByDormitoryId(List<Dormitory> ds); -->
+    <delete id="deleteDormitoryAllocationByDormitoryId" parameterType="java.util.List" >
+        delete from dormitory_allocation 
+        where dormitory_id in
+         <foreach collection="list" item="item" index="index" open="(" close=")"
+			separator=",">
+			#{item.id,jdbcType=INTEGER}
+		</foreach>
+         
+    </delete>
+    
+<!--     4.查询混合宿舍id -->
+    <select id="getManyClassDormitory" resultMap="BaseResultMap" parameterType="com.he.viewpo.DDMC">
+    	SELECT a.* 
+    	from  
+    	dormitory_allocation  as a ,dormitory as b 
+    	where 
+		a.dormitory_id=b.id 
+		and b.sex=#{sex,jdbcType=VARCHAR} 
+		GROUP BY (a.dormitory_id) HAVING COUNT(a.dormitory_id)>1
+    	
+    </select>
+<!--   5.查询男女宿舍中不满员宿舍   -->
+	<select id="getSginManyClassDormitory" resultMap="BaseResultMap1" parameterType="com.he.viewpo.DDMC">
+    	SELECT a.* from  
+    	dormitory_allocation  as a ,dormitory as b 
+    	where 
+		a.dormitory_id=b.id 
+		and a.number &lt; b.number 
+		and b.sex=#{sex,jdbcType=VARCHAR} 
+		and a.dormitory_id in 
+		(
+			SELECT dormitory_id
+			from dormitory_allocation
+			GROUP BY (dormitory_id) HAVING COUNT(dormitory_id) = 1
+		)
+    </select>
+	
+    
+</mapper>

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.he.dao.UsersMapper">
+
+	<resultMap id="BaseResultMap" type="com.he.po.Users">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="username" property="username"
+			jdbcType="VARCHAR" />
+		<result column="password" property="password"
+			jdbcType="VARCHAR" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<resultMap id="lazyLoadRoles" type="com.he.po.Users"
+		extends="BaseResultMap">
+		<collection property="roles" ofType="com.he.po.Role"
+			select="com.he.dao.RoleMapper.selectRoleByUserId" column="id"></collection>
+	</resultMap>
+
+	<!-- 新用户类newusers -->
+	<resultMap id="newlazyLoadRoles"
+		type="com.he.viewpo.NewUsers" extends="BaseResultMap">
+		<collection property="roles" ofType="com.he.po.Role"
+			select="com.he.dao.RoleMapper.selectRoleByUserId" column="id"></collection>
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, username, password, type
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from users
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+
+	<delete id="deleteByPrimaryKey"
+		parameterType="java.lang.Integer">
+		delete from users
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+
+	<insert id="insert" parameterType="com.he.po.Users">
+		insert into users (id, username, password,
+		type)
+		values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR},
+		#{type,jdbcType=VARCHAR})
+	</insert>
+
+	<insert id="insertSelective" parameterType="com.he.po.Users">
+		insert into users
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="username != null">
+				username,
+			</if>
+			<if test="password != null">
+				password,
+			</if>
+			<if test="type != null">
+				type,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="username != null">
+				#{username,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				#{password,jdbcType=VARCHAR},
+			</if>
+			<if test="type != null">
+				#{type,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateByPrimaryKeySelective"
+		parameterType="com.he.po.Users">
+		update users
+		<set>
+			<if test="username != null">
+				username = #{username,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null">
+				password = #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="type != null">
+				type = #{type,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<update id="updateByPrimaryKey" parameterType="com.he.po.Users">
+		update users
+		set username = #{username,jdbcType=VARCHAR},
+		password = #{password,jdbcType=VARCHAR},
+		type = #{type,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<!-- 1.根据username查询Users -->
+	<select id="selectUsersByUserName" resultMap="lazyLoadRoles"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from users
+		where username = #{username,jdbcType=VARCHAR}
+		limit 1
+	</select>
+
+
+	<!-- 2.初始化用户表，将student_basic与teacher表中数据取到users表中 -->
+	<insert id="initUsers" parameterType="java.util.List">
+		insert into
+		users (username,password,type)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(
+			#{item.username,jdbcType=VARCHAR},
+			#{item.password,jdbcType=VARCHAR},
+			#{item.type,jdbcType=VARCHAR}
+			)
+		</foreach>
+	</insert>
+
+	<!-- 3.获取所有用户 -->
+	<select id="getAllUsers" resultMap="newlazyLoadRoles"
+		parameterType="com.he.viewpo.NewUsers">
+		select
+		<include refid="Base_Column_List" />
+		from users
+		<where>
+			<if test="username != null and username !='' ">
+				and username=#{username,jdbcType=VARCHAR}
+			</if>
+			<if test="type != null and type!=''">
+				and type=#{type,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<!-- 4.批量删除用户 deleteListUser -->
+
+	<delete id="deleteListUser" parameterType="java.util.List">
+		delete from users where id in
+		<foreach collection="list" item="item" open="(" close=")"
+			separator=",">
+			#{item,jdbcType=INTEGER}
+		</foreach>
+	</delete>
+	<!-- 5.新增用户 -->
+	<insert id="addUsers" parameterType="com.he.viewpo.NewUsers">
+		insert into
+		users (username,password,type)
+		values
+		(
+		#{username,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR},
+		#{type,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<!-- 6. 修改用户 -->
+
+	<update id="updateUsers" parameterType="com.he.viewpo.NewUsers">
+		update users
+		set username = #{username,jdbcType=VARCHAR},
+		password = #{password,jdbcType=VARCHAR},
+		type = #{type,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<!-- 7.根据username与密码、类型查询Users -->
+	<select id="selectHasTwoUsers" resultMap="lazyLoadRoles"
+		parameterType="com.he.viewpo.NewUsers">
+		select
+		<include refid="Base_Column_List" />
+		from users
+		where username = #{username,jdbcType=VARCHAR} and type =
+		#{type,jdbcType=VARCHAR}
+		limit 1
+	</select>
+
+	<!-- 8.查询拥有与否某权限的用户 -->
+	<select id="selectnoaddroleuserinfo" resultMap="lazyLoadRoles"
+		parameterType="java.lang.String">
+		select
+		users.*
+		from users
+		<where>
+			<if test="username != null and username !='' ">
+				and users.username=#{username,jdbcType=VARCHAR}
+			</if>
+			<if test="utype != null and utype !='' ">
+				and users.type =#{utype,jdbcType=VARCHAR}
+			</if>
+			<if test="type !='add'">
+				and users.id in
+			</if>
+			<if test="type =='add'">
+				and users.id not in
+			</if>
+			(
+				select b.user_id 
+				from user_role b,role c
+				where 
+				users.id=b.user_id and b.role_id=c.id
+				and c.role_id =#{roleId,jdbcType=VARCHAR}
+			)
+
+		</where>
+
+	</select>
+
+</mapper>

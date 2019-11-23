@@ -1,0 +1,8 @@
+2019-09-05 17:13:28,322 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: jxgc(String), rw(String)
+2019-09-05 17:13:28,325 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-05 17:13:30,104 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, department_id, name, director, dept_id from department WHERE dept_id=? 
+2019-09-05 17:13:30,105 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: lg(String)
+2019-09-05 17:13:30,108 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 4
+2019-09-05 17:13:30,159 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select COUNT(student_status.id) from student_status left join class on student_status.class_id=class.class_id left join major on class.major_id=major.major_id left join department on major.department_id=department.department_id left join dept on department.dept_id=dept.dept_id WHERE department.department_id = ? and dept.dept_id = ? and student_status.student_id not in (SELECT pay.student_id from pay) 
+2019-09-05 17:13:30,161 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: jxgc(String), lg(String)
+2019-09-05 17:13:30,164 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1

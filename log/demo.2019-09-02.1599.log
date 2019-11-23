@@ -1,0 +1,8 @@
+2019-09-02 19:04:07,881 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-02 19:04:07,884 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-02 19:04:07,884 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select dormitory.id, dormitory.dong, dormitory.floor,dormitory.room, dormitory.sex, dormitory.number,dormitory.rent from dormitory ,dormitory_registration where dormitory.id=dormitory_registration.dormitory_id and dormitory_registration.student_id = ? 
+2019-09-02 19:04:07,885 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 19380501(String)
+2019-09-02 19:04:07,888 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-02 19:04:09,275 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select a.id,a.basic_id, a.student_id, a.class_id from student_status as a ,student_basic as b where a.basic_id=b.id and b.ID_number=? limit 1 
+2019-09-02 19:04:09,278 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 450803199804128(String)
+2019-09-02 19:04:09,279 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 

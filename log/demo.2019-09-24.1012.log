@@ -1,0 +1,11 @@
+2019-09-24 17:28:10,793 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 082803201901(String), 1班(String), 2019级(String), 082803(String), 082803201902(String), 2班(String), 2019级(String), 082803(String)
+2019-09-24 17:28:10,796 DEBUG (BaseJdbcLogger.java:143)- <==    Updates: 2
+2019-09-24 17:28:10,822 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select major from student_basic where state='0' GROUP BY(major) 
+2019-09-24 17:28:10,824 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 17:28:10,825 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-24 17:28:12,635 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select major.*, Class.id as cid, Class.class_id as cclass_id, Class.name as cname, Class.director as cdirector, Class.grade as cgrade, Class.major_id as cmajor_id from major,Class WHERE major.major_id=Class.major_id 
+2019-09-24 17:28:12,645 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 17:28:12,655 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 23
+2019-09-24 17:28:12,774 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, dept_id, name, director from dept where name!='教务处' and name!='舍管科' 
+2019-09-24 17:28:12,775 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 17:28:12,778 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 3

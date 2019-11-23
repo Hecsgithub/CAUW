@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.he.dao.ApplyfileMapper" >
+
+    <resultMap id="BaseResultMap" type="com.he.po.Applyfile" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="filename" property="filename" jdbcType="VARCHAR" />
+        <result column="fileurl" property="fileurl" jdbcType="VARCHAR" />
+        <result column="apply_id" property="applyId" jdbcType="INTEGER" />
+        <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, filename, fileurl, apply_id, remarks
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from applyfile
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from applyfile
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insert" parameterType="com.he.po.Applyfile" >
+        insert into applyfile (id, filename, fileurl, 
+            apply_id, remarks)
+        values (#{id,jdbcType=INTEGER}, #{filename,jdbcType=VARCHAR}, #{fileurl,jdbcType=VARCHAR}, 
+            #{applyId,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.he.po.Applyfile" >
+        insert into applyfile
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="filename != null" >
+                filename,
+            </if>
+            <if test="fileurl != null" >
+                fileurl,
+            </if>
+            <if test="applyId != null" >
+                apply_id,
+            </if>
+            <if test="remarks != null" >
+                remarks,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="filename != null" >
+                #{filename,jdbcType=VARCHAR},
+            </if>
+            <if test="fileurl != null" >
+                #{fileurl,jdbcType=VARCHAR},
+            </if>
+            <if test="applyId != null" >
+                #{applyId,jdbcType=INTEGER},
+            </if>
+            <if test="remarks != null" >
+                #{remarks,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.he.po.Applyfile" >
+        update applyfile
+        <set >
+            <if test="filename != null" >
+                filename = #{filename,jdbcType=VARCHAR},
+            </if>
+            <if test="fileurl != null" >
+                fileurl = #{fileurl,jdbcType=VARCHAR},
+            </if>
+            <if test="applyId != null" >
+                apply_id = #{applyId,jdbcType=INTEGER},
+            </if>
+            <if test="remarks != null" >
+                remarks = #{remarks,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.he.po.Applyfile" >
+        update applyfile
+        set filename = #{filename,jdbcType=VARCHAR},
+            fileurl = #{fileurl,jdbcType=VARCHAR},
+            apply_id = #{applyId,jdbcType=INTEGER},
+            remarks = #{remarks,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    
+    <!-- //1.批量增加申请文件数据 -->
+	<!-- int insertApplyFileByList(List<Applyfile> afs); -->
+
+	<insert id="insertApplyFileByList" parameterType="java.util.List">
+		insert into applyfile (filename, fileurl,apply_id,remarks)
+
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+
+			( #{item.filename,jdbcType=VARCHAR},
+			 #{item.fileurl,jdbcType=VARCHAR},
+			#{item.applyId,jdbcType=INTEGER},
+			#{item.remarks,jdbcType=VARCHAR})
+
+
+		</foreach>
+	</insert>
+
+
+	<!-- //2.批量删除申请文件数据 -->
+	<!-- int deleteApplyFileByList(List<Applyfile> afs); -->
+<delete id="deleteApplyFileByList"
+		parameterType="java.util.List">
+		delete from applyfile
+		where apply_id in
+		<foreach collection="list" item="item" open="(" close=")" separator=",">
+      #{item.applyId,jdbcType=INTEGER}
+    </foreach>
+	</delete>
+
+
+	<!-- //3.查询申请文件 -->
+	<!-- List<Applyfile> selectApplyfile(Applyfile af); -->
+	<select id="selectApplyfile" resultMap="BaseResultMap"
+		parameterType="com.he.po.Apply">
+		select
+		<include refid="Base_Column_List" />
+		from applyfile
+		where apply_id in 
+		(
+			select id from apply
+			where student_id=#{studentId,jdbcType=VARCHAR}
+		)
+			
+		
+		
+	</select>
+	
+<!-- 	//4重新上传文件修改某ID的文件名与文件路径 并将备注删除-->
+<!--     int updateAppliFile(Applyfile af); -->
+	<update id="updateAppliFile" parameterType="com.he.po.Applyfile" >
+        update applyfile
+         <set >
+            <if test="filename != null and filename!=''" >
+                filename = #{filename,jdbcType=VARCHAR},
+            </if>
+            <if test="fileurl != null and fileurl!=''" >
+                fileurl = #{fileurl,jdbcType=VARCHAR},
+            </if>
+            <if test="applyId != null and applyId!=''" >
+                apply_id = #{applyId,jdbcType=INTEGER},
+            </if>
+            <if test="remarks != null and remarks!=''" >
+                remarks = #{remarks,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+                
+    </update>
+	
+</mapper>

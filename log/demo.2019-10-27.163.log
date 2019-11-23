@@ -1,0 +1,6 @@
+2019-10-27 19:17:34,949 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select dormitory.id, dormitory.dong, dormitory.floor, dormitory.room, dormitory.sex, dormitory.number, dormitory.rent, dormitory.hasnumber from dormitory LEFT JOIN dormitory_allocation on dormitory_allocation.dormitory_id = dormitory.id LEFT JOIN class on dormitory_allocation.class_id=class.class_id LEFT JOIN major on class.major_id=major.major_id WHERE dong = ? and floor = ? group by dormitory.dong,dormitory.floor,dormitory.room 
+2019-10-27 19:17:34,952 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 1A(String), 2(Integer)
+2019-10-27 19:17:34,958 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 50
+2019-10-27 21:03:48,881 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, username, password, type from users where username = ? limit 1 
+2019-10-27 21:03:48,905 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 2019716(String)
+2019-10-27 21:03:48,923 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select a.id, a.role_id, a.name from role as a,user_role as b where a.id=b.role_id and b.user_id=? 

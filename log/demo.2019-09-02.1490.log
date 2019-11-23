@@ -1,0 +1,10 @@
+2019-09-02 12:44:04,982 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-02 12:44:04,982 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 3
+2019-09-02 12:44:08,846 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select major.*, Class.id as cid, Class.class_id as cclass_id, Class.name as cname, Class.director as cdirector, Class.grade as cgrade, Class.major_id as cmajor_id from major,Class ,Users WHERE major.major_id=Class.major_id and Class.director=Users.username and Users.username = ? 
+2019-09-02 12:44:08,848 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 2019733(String)
+2019-09-02 12:44:08,853 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 3
+2019-09-02 12:44:10,484 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, class_id, notice_word, time from class_notice where class_id = ? 
+2019-09-02 12:44:10,486 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 080205201901(String)
+2019-09-02 12:44:10,487 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-02 12:44:26,054 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: insert into class_notice (class_id, notice_word, time) values ( ?, ?, ?) 
+2019-09-02 12:44:26,054 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 080205201901(String), 7.30食堂集合(String), 2019-09-02 12:44:26.053(Timestamp)

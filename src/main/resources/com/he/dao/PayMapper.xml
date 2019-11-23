@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.he.dao.PayMapper" >
+
+    <resultMap id="BaseResultMap" type="com.he.po.Pay" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="pipeline_id" property="pipelineId" jdbcType="VARCHAR" />
+        <result column="student_id" property="studentId" jdbcType="VARCHAR" />
+        <result column="time" property="time" jdbcType="TIMESTAMP" />
+        <result column="money" property="money" jdbcType="VARCHAR" />
+        <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, pipeline_id, student_id, time, money, remarks
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from pay
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from pay
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insert" parameterType="com.he.po.Pay" >
+        insert into pay (id, pipeline_id, student_id, 
+            time, money, remarks
+            )
+        values (#{id,jdbcType=INTEGER}, #{pipelineId,jdbcType=VARCHAR}, #{studentId,jdbcType=VARCHAR}, 
+            #{time,jdbcType=TIMESTAMP}, #{money,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}
+            )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.he.po.Pay" >
+        insert into pay
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="pipelineId != null" >
+                pipeline_id,
+            </if>
+            <if test="studentId != null" >
+                student_id,
+            </if>
+            <if test="time != null" >
+                time,
+            </if>
+            <if test="money != null" >
+                money,
+            </if>
+            <if test="remarks != null" >
+                remarks,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="pipelineId != null" >
+                #{pipelineId,jdbcType=VARCHAR},
+            </if>
+            <if test="studentId != null" >
+                #{studentId,jdbcType=VARCHAR},
+            </if>
+            <if test="time != null" >
+                #{time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="money != null" >
+                #{money,jdbcType=VARCHAR},
+            </if>
+            <if test="remarks != null" >
+                #{remarks,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.he.po.Pay" >
+        update pay
+        <set >
+            <if test="pipelineId != null" >
+                pipeline_id = #{pipelineId,jdbcType=VARCHAR},
+            </if>
+            <if test="studentId != null" >
+                student_id = #{studentId,jdbcType=VARCHAR},
+            </if>
+            <if test="time != null" >
+                time = #{time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="money != null" >
+                money = #{money,jdbcType=VARCHAR},
+            </if>
+            <if test="remarks != null" >
+                remarks = #{remarks,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.he.po.Pay" >
+        update pay
+        set pipeline_id = #{pipelineId,jdbcType=VARCHAR},
+            student_id = #{studentId,jdbcType=VARCHAR},
+            time = #{time,jdbcType=TIMESTAMP},
+            money = #{money,jdbcType=VARCHAR},
+            remarks = #{remarks,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    
+<!--     //1.插入转账信息 -->
+<!--     int insertPay(Pay pay); -->
+    <insert id="insertPay" parameterType="com.he.po.Pay" >
+        insert into pay
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="pipelineId != null" >
+                pipeline_id,
+            </if>
+            <if test="studentId != null" >
+                student_id,
+            </if>
+            <if test="time != null" >
+                time,
+            </if>
+            <if test="money != null" >
+                money,
+            </if>
+            <if test="remarks != null" >
+                remarks,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="pipelineId != null" >
+                #{pipelineId,jdbcType=VARCHAR},
+            </if>
+            <if test="studentId != null" >
+                #{studentId,jdbcType=VARCHAR},
+            </if>
+            <if test="time != null" >
+                #{time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="money != null" >
+                #{money,jdbcType=VARCHAR},
+            </if>
+            <if test="remarks != null" >
+                #{remarks,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    
+<!--      //查询学生的转账记录 -->
+<!--     Pay getPayBystudentId(Pay pay); -->
+	 <select id="getPayBystudentId" resultMap="BaseResultMap" parameterType="com.he.po.Pay" >
+        select 
+        <include refid="Base_Column_List" />
+        from pay
+        <where>
+        	<if test="id != null " >
+              and  id = #{id,jdbcType=INTEGER}
+            </if>
+        	<if test="pipelineId != null and pipelineId !=''" >
+              and  pipeline_id = #{pipelineId,jdbcType=VARCHAR}
+            </if>
+            <if test="studentId != null and studentId !=''" >
+              and  student_id = #{studentId,jdbcType=VARCHAR}
+            </if>
+            <if test="time != null and time !=''" >
+              and  time = #{time,jdbcType=TIMESTAMP}
+            </if>
+            <if test="money != null and money !=''" >
+              and  money = #{money,jdbcType=VARCHAR}
+            </if>
+            <if test="remarks != null and remarks !=''" >
+              and  remarks = #{remarks,jdbcType=VARCHAR}
+            </if>
+        </where>
+		limit 1
+    </select>
+
+<!--   //3.查询缴费与否学生人数 -->
+<!--     int selectPaycount(DDMC ddmc); -->
+
+<select id="selectPaycount" resultType="java.lang.Integer" parameterType="com.he.viewpo.DDMC" >
+       select 
+        COUNT(student_status.id)
+        from student_status left join class on student_status.class_id=class.class_id
+        left join major on class.major_id=major.major_id
+        left join department on major.department_id=department.department_id
+        left join dept on department.dept_id=dept.dept_id
+        <where> 
+            <if test="majorId != null and majorId != '' " >
+              and  major.major_id = #{majorId,jdbcType=VARCHAR}
+            </if>
+            
+            <if test="departmentId != null and departmentId !='' " >
+              and  department.department_id = #{departmentId,jdbcType=VARCHAR}
+            </if>
+            
+            <if test="deptId != null and deptId !='' " >
+              and  dept.dept_id = #{deptId,jdbcType=VARCHAR}
+            </if>
+            
+            <if test="classId != null and classId !='' " >
+              and  class.class_id = #{classId,jdbcType=VARCHAR}
+            </if>
+            <if test="enough != null and enough !='' " >
+            and student_status.student_id
+              	<if test="enough=='not'">
+              		 not 
+              	</if>
+             in 
+              	(
+              	SELECT pay.student_id from pay
+              		<where>
+              			<if test="remarks != null and remarks !='' " >
+              			pay.remarks = #{remarks,jdbcType=VARCHAR}
+            		</if>
+              		</where>
+              	)
+            </if>
+            
+       </where>
+        
+				
+
+    </select>
+
+</mapper>

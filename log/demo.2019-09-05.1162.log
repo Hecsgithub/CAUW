@@ -1,0 +1,9 @@
+2019-09-05 12:31:34,653 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, major_id, name, price, department_id from major 
+2019-09-05 12:31:34,658 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-05 12:31:34,661 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select class.*,major.name as major,department.name as department,dept.name as dept from class left join major on class.major_id=major.major_id left join department on major.department_id=department.department_id left join dept on department.dept_id=dept.dept_id 
+2019-09-05 12:31:34,662 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-05 12:31:34,662 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 16
+2019-09-05 12:31:34,663 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, department_id, name, director, dept_id from department 
+2019-09-05 12:31:34,664 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 20
+2019-09-05 12:31:34,665 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-05 12:31:34,672 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 10

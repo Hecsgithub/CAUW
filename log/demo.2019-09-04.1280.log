@@ -1,0 +1,256 @@
+2019-09-04 04:00:05,883 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19771(String)
+2019-09-04 04:00:05,885 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:05,885 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:05,886 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19773(String)
+2019-09-04 04:00:05,886 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:05,887 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:05,888 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19774(String)
+2019-09-04 04:00:05,890 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:05,890 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:05,891 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19776(String)
+2019-09-04 04:00:05,892 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:05,892 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:05,892 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19778(String)
+2019-09-04 04:00:05,893 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:05,893 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:05,894 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19780(String)
+2019-09-04 04:00:05,894 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:05,894 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:05,895 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19783(String)
+2019-09-04 04:00:05,895 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:05,896 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:05,896 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19785(String)
+2019-09-04 04:00:05,897 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:05,897 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:05,897 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19786(String)
+2019-09-04 04:00:05,898 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:05,898 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:05,898 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19789(String)
+2019-09-04 04:00:05,899 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:05,899 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 22
+2019-09-04 04:00:05,899 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select dormitory_allocation.id, dormitory_allocation.class_id, dormitory_allocation.dormitory_id,dormitory_allocation.number from dormitory_allocation,dormitory WHERE dormitory_allocation.dormitory_id=dormitory.id and dormitory.sex=? and class_id = ? 
+2019-09-04 04:00:05,900 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 男(String), 080205201904(String)
+2019-09-04 04:00:05,900 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-04 04:00:06,122 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: insert into dormitory_allocation (class_id, dormitory_id,number) values ( ?, ?, ? ) 
+2019-09-04 04:00:06,124 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 130503201903(String), 22(Integer), 5(Integer)
+2019-09-04 04:00:06,139 DEBUG (BaseJdbcLogger.java:143)- <==    Updates: 1
+2019-09-04 04:00:06,139 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, dong, floor, room, sex, number, rent,hasnumber from dormitory where id = ? 
+2019-09-04 04:00:06,139 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 22(Integer)
+2019-09-04 04:00:06,141 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-04 04:00:06,141 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: update dormitory set dong = ?, floor = ?, room = ?, sex = ?, number = ?, rent = ?, hasnumber = ? where id = ? 
+2019-09-04 04:00:06,141 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 1A(String), 1(Integer), 22(Integer), 男(String), 5(Integer), 1250(String), 5(Integer), 22(Integer)
+2019-09-04 04:00:06,144 DEBUG (BaseJdbcLogger.java:143)- <==    Updates: 1
+2019-09-04 04:00:06,165 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, class_id, name, director, grade, major_id from class 
+2019-09-04 04:00:06,166 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-04 04:00:06,167 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, major_id, name, price, department_id from major where major_id = ? 
+2019-09-04 04:00:06,167 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 081001(String)
+2019-09-04 04:00:06,168 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,169 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, major_id, name, price, department_id from major where major_id = ? 
+2019-09-04 04:00:06,169 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 080205(String)
+2019-09-04 04:00:06,170 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,170 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, major_id, name, price, department_id from major where major_id = ? 
+2019-09-04 04:00:06,171 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 130503(String)
+2019-09-04 04:00:06,172 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,172 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, major_id, name, price, department_id from major where major_id = ? 
+2019-09-04 04:00:06,174 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 080702(String)
+2019-09-04 04:00:06,175 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,176 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, major_id, name, price, department_id from major where major_id = ? 
+2019-09-04 04:00:06,177 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 080901(String)
+2019-09-04 04:00:06,178 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,179 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, major_id, name, price, department_id from major where major_id = ? 
+2019-09-04 04:00:06,180 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 080703(String)
+2019-09-04 04:00:06,181 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,181 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, major_id, name, price, department_id from major where major_id = ? 
+2019-09-04 04:00:06,182 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 082803(String)
+2019-09-04 04:00:06,183 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,184 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 22
+2019-09-04 04:00:06,184 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select student_status.id,student_status.basic_id, student_status.student_id, student_status.class_id from student_status,student_basic where student_status.basic_id=student_basic.id and student_basic.sex=? and student_status.class_id=? 
+2019-09-04 04:00:06,185 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 男(String), 081001201901(String)
+2019-09-04 04:00:06,186 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select DISTINCT dormitory.dong from dormitory where dormitory.sex=? 
+2019-09-04 04:00:06,186 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 男(String)
+2019-09-04 04:00:06,187 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,188 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19158(String)
+2019-09-04 04:00:06,189 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,190 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 2
+2019-09-04 04:00:06,190 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, class_id, name, director, grade, major_id from class where class_id = ? 
+2019-09-04 04:00:06,191 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 081001201901(String)
+2019-09-04 04:00:06,200 DEBUG (BaseJdbcLogger.java:143)- ======>  Preparing: select id, major_id, name, price, department_id from major where major_id = ? 
+2019-09-04 04:00:06,201 DEBUG (BaseJdbcLogger.java:143)- ======> Parameters: 081001(String)
+2019-09-04 04:00:06,216 DEBUG (BaseJdbcLogger.java:143)- <======      Total: 1
+2019-09-04 04:00:06,217 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,217 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,217 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19162(String)
+2019-09-04 04:00:06,218 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,219 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,219 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19163(String)
+2019-09-04 04:00:06,221 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,222 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,222 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19165(String)
+2019-09-04 04:00:06,224 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,224 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,225 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19167(String)
+2019-09-04 04:00:06,226 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,226 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,227 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19168(String)
+2019-09-04 04:00:06,228 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,229 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,229 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19169(String)
+2019-09-04 04:00:06,230 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,231 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,231 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19170(String)
+2019-09-04 04:00:06,232 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,233 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,234 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19174(String)
+2019-09-04 04:00:06,236 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,236 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,237 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19175(String)
+2019-09-04 04:00:06,238 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,238 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,239 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19176(String)
+2019-09-04 04:00:06,241 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,241 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,242 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19178(String)
+2019-09-04 04:00:06,242 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,243 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,243 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19179(String)
+2019-09-04 04:00:06,244 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,245 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,245 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19185(String)
+2019-09-04 04:00:06,246 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,247 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,248 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19189(String)
+2019-09-04 04:00:06,249 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,249 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,249 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19190(String)
+2019-09-04 04:00:06,250 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,251 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,251 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19194(String)
+2019-09-04 04:00:06,252 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,253 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,253 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19195(String)
+2019-09-04 04:00:06,254 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,255 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 18
+2019-09-04 04:00:06,255 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select dormitory_allocation.id, dormitory_allocation.class_id, dormitory_allocation.dormitory_id,dormitory_allocation.number from dormitory_allocation,dormitory WHERE dormitory_allocation.dormitory_id=dormitory.id and dormitory.sex=? and class_id = ? 
+2019-09-04 04:00:06,256 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 男(String), 081001201901(String)
+2019-09-04 04:00:06,258 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, dong, floor, room, sex, number, rent,hasnumber from dormitory where id = ? 
+2019-09-04 04:00:06,259 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 1(Integer)
+2019-09-04 04:00:06,260 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,260 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, dong, floor, room, sex, number, rent,hasnumber from dormitory where id = ? 
+2019-09-04 04:00:06,261 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 2(Integer)
+2019-09-04 04:00:06,261 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,262 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, dong, floor, room, sex, number, rent,hasnumber from dormitory where id = ? 
+2019-09-04 04:00:06,262 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 3(Integer)
+2019-09-04 04:00:06,262 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select DISTINCT dormitory.floor from dormitory where dormitory.dong=? 
+2019-09-04 04:00:06,263 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 1A(String)
+2019-09-04 04:00:06,263 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,264 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, dong, floor, room, sex, number, rent,hasnumber from dormitory where id = ? 
+2019-09-04 04:00:06,264 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 4(Integer)
+2019-09-04 04:00:06,265 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 6
+2019-09-04 04:00:06,265 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,266 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 4
+2019-09-04 04:00:06,266 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select student_status.id,student_status.basic_id, student_status.student_id, student_status.class_id from student_status,student_basic where student_status.basic_id=student_basic.id and student_basic.sex=? and student_status.class_id=? 
+2019-09-04 04:00:06,267 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 男(String), 081001201902(String)
+2019-09-04 04:00:06,278 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,278 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19200(String)
+2019-09-04 04:00:06,280 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,281 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, class_id, name, director, grade, major_id from class where class_id = ? 
+2019-09-04 04:00:06,282 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 081001201902(String)
+2019-09-04 04:00:06,289 DEBUG (BaseJdbcLogger.java:143)- ======>  Preparing: select id, major_id, name, price, department_id from major where major_id = ? 
+2019-09-04 04:00:06,290 DEBUG (BaseJdbcLogger.java:143)- ======> Parameters: 081001(String)
+2019-09-04 04:00:06,291 DEBUG (BaseJdbcLogger.java:143)- <======      Total: 1
+2019-09-04 04:00:06,291 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,292 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,292 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19204(String)
+2019-09-04 04:00:06,294 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,294 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,294 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select dormitory.id, dormitory.dong, dormitory.floor, dormitory.room, dormitory.sex, dormitory.number, dormitory.rent, dormitory.hasnumber from dormitory LEFT JOIN dormitory_allocation on dormitory_allocation.dormitory_id = dormitory.id LEFT JOIN class on dormitory_allocation.class_id=class.class_id LEFT JOIN major on class.major_id=major.major_id WHERE dong = ? and floor = ? group by dormitory.dong,dormitory.floor,dormitory.room 
+2019-09-04 04:00:06,294 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19207(String)
+2019-09-04 04:00:06,294 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 1A(String), 1(Integer)
+2019-09-04 04:00:06,295 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,296 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,296 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19208(String)
+2019-09-04 04:00:06,297 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,297 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,297 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19212(String)
+2019-09-04 04:00:06,298 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,299 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,301 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19215(String)
+2019-09-04 04:00:06,302 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,303 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,303 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19216(String)
+2019-09-04 04:00:06,306 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,307 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,307 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19217(String)
+2019-09-04 04:00:06,309 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,310 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 50
+2019-09-04 04:00:06,311 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,311 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19219(String)
+2019-09-04 04:00:06,324 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,326 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,326 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19222(String)
+2019-09-04 04:00:06,326 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,327 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,328 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19223(String)
+2019-09-04 04:00:06,328 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,328 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,328 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19226(String)
+2019-09-04 04:00:06,329 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,331 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,331 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19227(String)
+2019-09-04 04:00:06,331 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,331 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,332 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19228(String)
+2019-09-04 04:00:06,333 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,333 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,333 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19229(String)
+2019-09-04 04:00:06,334 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,334 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,335 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19230(String)
+2019-09-04 04:00:06,335 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,336 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,336 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19231(String)
+2019-09-04 04:00:06,337 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,337 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 17
+2019-09-04 04:00:06,337 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select dormitory_allocation.id, dormitory_allocation.class_id, dormitory_allocation.dormitory_id,dormitory_allocation.number from dormitory_allocation,dormitory WHERE dormitory_allocation.dormitory_id=dormitory.id and dormitory.sex=? and class_id = ? 
+2019-09-04 04:00:06,338 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 男(String), 081001201902(String)
+2019-09-04 04:00:06,339 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, dong, floor, room, sex, number, rent,hasnumber from dormitory where id = ? 
+2019-09-04 04:00:06,340 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 6(Integer)
+2019-09-04 04:00:06,341 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,341 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, dong, floor, room, sex, number, rent,hasnumber from dormitory where id = ? 
+2019-09-04 04:00:06,341 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 7(Integer)
+2019-09-04 04:00:06,342 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,342 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, dong, floor, room, sex, number, rent,hasnumber from dormitory where id = ? 
+2019-09-04 04:00:06,342 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 8(Integer)
+2019-09-04 04:00:06,343 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,343 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, dong, floor, room, sex, number, rent,hasnumber from dormitory where id = ? 
+2019-09-04 04:00:06,344 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 9(Integer)
+2019-09-04 04:00:06,344 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,344 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 4
+2019-09-04 04:00:06,345 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select student_status.id,student_status.basic_id, student_status.student_id, student_status.class_id from student_status,student_basic where student_status.basic_id=student_basic.id and student_basic.sex=? and student_status.class_id=? 
+2019-09-04 04:00:06,345 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 男(String), 080205201902(String)
+2019-09-04 04:00:06,347 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,347 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19797(String)
+2019-09-04 04:00:06,348 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,349 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, class_id, name, director, grade, major_id from class where class_id = ? 
+2019-09-04 04:00:06,349 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 080205201902(String)
+2019-09-04 04:00:06,349 DEBUG (BaseJdbcLogger.java:143)- ======>  Preparing: select id, major_id, name, price, department_id from major where major_id = ? 
+2019-09-04 04:00:06,349 DEBUG (BaseJdbcLogger.java:143)- ======> Parameters: 080205(String)
+2019-09-04 04:00:06,351 DEBUG (BaseJdbcLogger.java:143)- <======      Total: 1
+2019-09-04 04:00:06,351 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,351 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,351 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19799(String)
+2019-09-04 04:00:06,351 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,352 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,352 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19801(String)
+2019-09-04 04:00:06,353 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,353 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,353 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19802(String)
+2019-09-04 04:00:06,354 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,355 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,355 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19804(String)
+2019-09-04 04:00:06,357 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,357 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,358 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19805(String)
+2019-09-04 04:00:06,358 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-04 04:00:06,359 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-04 04:00:06,359 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19806(String)

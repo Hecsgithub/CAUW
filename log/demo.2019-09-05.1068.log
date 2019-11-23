@@ -1,0 +1,10 @@
+2019-09-05 12:22:34,599 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 13
+2019-09-05 12:22:38,250 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, url, path, component, name, iconCls, keepAlive, requireAuth, parentId, enabled from menu where parentId=1 and id = ? 
+2019-09-05 12:22:38,251 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 51(Integer)
+2019-09-05 12:22:38,253 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-05 12:22:38,254 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: insert into menu_role(role_id, menu_id) values ( ?, ?) 
+2019-09-05 12:22:38,254 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 5(Integer), 51(Integer)
+2019-09-05 12:22:38,264 DEBUG (BaseJdbcLogger.java:143)- <==    Updates: 1
+2019-09-05 12:22:51,876 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, username, password, type from users where username = ? limit 1 
+2019-09-05 12:22:51,876 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 2019717(String)
+2019-09-05 12:22:51,877 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select a.id, a.role_id, a.name from role as a,user_role as b where a.id=b.role_id and b.user_id=? 

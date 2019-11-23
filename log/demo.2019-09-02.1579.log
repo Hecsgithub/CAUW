@@ -1,0 +1,19 @@
+2019-09-02 18:58:48,163 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-02 18:58:48,166 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 19002(String)
+2019-09-02 18:58:48,167 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-02 18:58:48,168 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, class_id, name, director, grade, major_id from class where class_id = ? 
+2019-09-02 18:58:48,168 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 080901201901(String)
+2019-09-02 18:58:48,170 DEBUG (BaseJdbcLogger.java:143)- ======>  Preparing: select id, major_id, name, price, department_id from major where major_id = ? 
+2019-09-02 18:58:48,171 DEBUG (BaseJdbcLogger.java:143)- ======> Parameters: 080901(String)
+2019-09-02 18:58:48,185 DEBUG (BaseJdbcLogger.java:143)- <======      Total: 1
+2019-09-02 18:58:48,186 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-02 18:58:48,187 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-02 18:58:48,188 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, teacher_id, password, name, sex, phone, email, adress from teacher where teacher_id = ? 
+2019-09-02 18:58:48,189 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: null
+2019-09-02 18:58:48,190 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-02 18:58:48,191 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, class_id, notice_word, time from class_notice where class_id = ? 
+2019-09-02 18:58:48,191 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 080901201901(String)
+2019-09-02 18:58:48,192 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-02 18:58:48,192 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select dormitory.id, dormitory.dong, dormitory.floor,dormitory.room, dormitory.sex, dormitory.number,dormitory.rent from dormitory ,dormitory_registration where dormitory.id=dormitory_registration.dormitory_id and dormitory_registration.student_id = ? 
+2019-09-02 18:58:48,193 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 1938050101(String)
+2019-09-02 18:58:48,194 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1

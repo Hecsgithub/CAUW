@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.he.dao.TeacherMapper" >
+
+    <resultMap id="BaseResultMap" type="com.he.po.Teacher" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="teacher_id" property="teacherId" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="sex" property="sex" jdbcType="VARCHAR" />
+        <result column="phone" property="phone" jdbcType="VARCHAR" />
+        <result column="email" property="email" jdbcType="VARCHAR" />
+        <result column="adress" property="adress" jdbcType="VARCHAR" />
+         <association property="roles" column="teacher_id" javaType="com.he.po.Role" 
+        select="com.he.dao.RoleMapper.selectRoleByUserId"/>
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, teacher_id, password, name, sex, phone, email, adress
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from teacher
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from teacher
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insert" parameterType="com.he.po.Teacher" >
+        insert into teacher (id, teacher_id, password, 
+            name, sex, phone, 
+            email, adress)
+        values (#{id,jdbcType=INTEGER}, #{teacherId,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+            #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+            #{email,jdbcType=VARCHAR}, #{adress,jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.he.po.Teacher" >
+        insert into teacher
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="teacherId != null" >
+                teacher_id,
+            </if>
+            <if test="password != null" >
+                password,
+            </if>
+            <if test="name != null" >
+                name,
+            </if>
+            <if test="sex != null" >
+                sex,
+            </if>
+            <if test="phone != null" >
+                phone,
+            </if>
+            <if test="email != null" >
+                email,
+            </if>
+            <if test="adress != null" >
+                adress,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="teacherId != null" >
+                #{teacherId,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null" >
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null" >
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null" >
+                #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null" >
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null" >
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="adress != null" >
+                #{adress,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.he.po.Teacher" >
+        update teacher
+        <set >
+            <if test="teacherId != null" >
+                teacher_id = #{teacherId,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null" >
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null" >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null" >
+                sex = #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null" >
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null" >
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="adress != null" >
+                adress = #{adress,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.he.po.Teacher" >
+        update teacher
+        set teacher_id = #{teacherId,jdbcType=VARCHAR},
+            password = #{password,jdbcType=VARCHAR},
+            name = #{name,jdbcType=VARCHAR},
+            sex = #{sex,jdbcType=VARCHAR},
+            phone = #{phone,jdbcType=VARCHAR},
+            email = #{email,jdbcType=VARCHAR},
+            adress = #{adress,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    
+<!--      1.   根据教职工号查信息 -->
+     
+    <select id="selectTeacherById" parameterType="java.lang.String" resultMap="BaseResultMap" >
+    	select 
+        <include refid="Base_Column_List" />
+        from teacher
+        where teacher_id = #{teacher_id,jdbcType=VARCHAR}
+    </select>
+<!--     2.新增职工以批量方式 -->
+
+
+   <insert id="insertListTeacher" parameterType="java.util.List" >
+	insert
+	into teacher( teacher_id, password, 
+            name, sex, phone, 
+            email, adress)
+	values
+	<foreach collection="list" item="item" index="index"
+		separator=",">
+ 
+		 ( #{item.teacherId,jdbcType=VARCHAR},
+		  #{item.password,jdbcType=VARCHAR}, 
+            #{item.name,jdbcType=VARCHAR},
+             #{item.sex,jdbcType=VARCHAR},
+              #{item.phone,jdbcType=VARCHAR}, 
+            #{item.email,jdbcType=VARCHAR},
+             #{item.adress,jdbcType=VARCHAR})
+		 
+		 
+	</foreach>
+</insert>
+    
+    
+<!--     3.批量删除职工 -->
+     
+    <delete id="deleteListTeacher" parameterType="java.util.List" >
+    delete from teacher where id in
+    <foreach collection="list" item="item" open="(" close=")" separator=",">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+    </delete>
+
+    
+    
+<!--  4.批量修改职工 -->
+    
+	<update id="updateListTeacher" parameterType="java.util.List">
+	
+    <foreach collection="list" item="item" index="index" open="" close="" separator=",">
+       update 
+       teacher
+        set teacher_id = #{item.teacherId,jdbcType=VARCHAR},
+            password = #{item.password,jdbcType=VARCHAR},
+            name = #{item.name,jdbcType=VARCHAR},
+            sex = #{item.sex,jdbcType=VARCHAR},
+            phone = #{item.phone,jdbcType=VARCHAR},
+            email = #{item.email,jdbcType=VARCHAR},
+            adress = #{item.adress,jdbcType=VARCHAR}
+    	where
+    	 id=#{item.id,jdbcType=INTEGER}
+    </foreach>         		
+	</update> 
+    
+<!--     //5.根据角色信息查询教师信息 -->
+<!--     List<Teacher> getAllTeacherByRole(Role role); -->
+    <select id="getAllTeacherByRole" parameterType="com.he.po.Role" resultMap="BaseResultMap" >
+    	select teacher.id,teacher.teacher_id, teacher.password, teacher.name, teacher.sex, teacher.phone, teacher.email, teacher.adress 
+		FROM teacher 
+		LEFT JOIN users on teacher.teacher_id=users.username
+		LEFT JOIN user_role on users.id=user_role.user_id
+		LEFT JOIN role on user_role.role_id=role.id
+		where role.name=#{name,jdbcType=VARCHAR}
+    </select>
+    
+    
+<!--     //6查询没有链接用户的教师 -->
+   	
+<!--    	List<Teacher> selectNoUsersTeacher(); -->
+    <select id="selectNoUsersTeacher" resultMap="BaseResultMap" >
+    	select teacher.id,teacher.teacher_id, teacher.password, teacher.name, teacher.sex, teacher.phone, teacher.email, teacher.adress 
+		FROM teacher where teacher.teacher_id not in(
+			select users.username
+			from users
+			where users.type='teacher'
+		)
+		
+
+    </select>
+    
+    
+</mapper>

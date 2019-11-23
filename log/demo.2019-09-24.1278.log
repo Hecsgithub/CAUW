@@ -1,0 +1,33 @@
+2019-09-24 19:01:57,315 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, major_id, name, price, department_id from major 
+2019-09-24 19:01:57,317 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 19:01:57,319 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 16
+2019-09-24 19:01:57,320 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select class.*,major.name as major,department.name as department,dept.name as dept from class left join major on class.major_id=major.major_id left join department on major.department_id=department.department_id left join dept on department.dept_id=dept.dept_id 
+2019-09-24 19:01:57,320 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, department_id, name, director, dept_id from department 
+2019-09-24 19:01:57,321 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 19:01:57,349 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 19:01:57,357 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 23
+2019-09-24 19:01:57,357 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 10
+2019-09-24 19:01:57,359 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, dept_id, name, director from dept where name!='教务处' and name!='舍管科' 
+2019-09-24 19:01:57,360 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 19:01:57,363 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 3
+2019-09-24 19:01:57,364 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select teacher.id,teacher.teacher_id, teacher.password, teacher.name, teacher.sex, teacher.phone, teacher.email, teacher.adress FROM teacher LEFT JOIN users on teacher.teacher_id=users.username LEFT JOIN user_role on users.id=user_role.user_id LEFT JOIN role on user_role.role_id=role.id where role.name=? 
+2019-09-24 19:01:57,365 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 班主任(String)
+2019-09-24 19:01:57,371 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select a.id, a.role_id, a.name from role as a,user_role as b where a.id=b.role_id and b.user_id=? 
+2019-09-24 19:01:57,372 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 2019728(Integer)
+2019-09-24 19:01:57,373 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 0
+2019-09-24 19:01:57,374 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select a.id, a.role_id, a.name from role as a,user_role as b where a.id=b.role_id and b.user_id=? 
+2019-09-24 19:01:57,374 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 2019729(Integer)
+2019-09-24 19:01:57,378 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 0
+2019-09-24 19:01:57,379 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select a.id, a.role_id, a.name from role as a,user_role as b where a.id=b.role_id and b.user_id=? 
+2019-09-24 19:01:57,379 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 2019730(Integer)
+2019-09-24 19:01:57,381 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 0
+2019-09-24 19:01:57,381 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select a.id, a.role_id, a.name from role as a,user_role as b where a.id=b.role_id and b.user_id=? 
+2019-09-24 19:01:57,381 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 2019731(Integer)
+2019-09-24 19:01:57,383 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 0
+2019-09-24 19:01:57,384 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select a.id, a.role_id, a.name from role as a,user_role as b where a.id=b.role_id and b.user_id=? 
+2019-09-24 19:01:57,384 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 2019732(Integer)
+2019-09-24 19:01:57,386 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 0
+2019-09-24 19:01:57,386 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select a.id, a.role_id, a.name from role as a,user_role as b where a.id=b.role_id and b.user_id=? 
+2019-09-24 19:01:57,387 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 2019733(Integer)
+2019-09-24 19:01:57,388 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 0
+2019-09-24 19:01:57,389 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 6

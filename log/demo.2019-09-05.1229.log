@@ -1,0 +1,8 @@
+2019-09-05 17:13:03,614 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-05 17:13:28,264 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, department_id, name, director, dept_id from department WHERE dept_id=? 
+2019-09-05 17:13:28,265 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: rw(String)
+2019-09-05 17:13:28,267 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 3
+2019-09-05 17:13:28,314 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select COUNT(student_status.id) from student_status left join class on student_status.class_id=class.class_id left join major on class.major_id=major.major_id left join department on major.department_id=department.department_id left join dept on department.dept_id=dept.dept_id WHERE department.department_id = ? and dept.dept_id = ? and student_status.student_id not in (SELECT pay.student_id from pay) 
+2019-09-05 17:13:28,317 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: jxgc(String), rw(String)
+2019-09-05 17:13:28,319 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-05 17:13:28,321 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select COUNT(student_status.id) from student_status left join class on student_status.class_id=class.class_id left join major on class.major_id=major.major_id left join department on major.department_id=department.department_id left join dept on department.dept_id=dept.dept_id WHERE department.department_id = ? and dept.dept_id = ? and student_status.student_id in (SELECT pay.student_id from pay) 

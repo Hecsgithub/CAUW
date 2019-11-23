@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.he.dao.StudentStatusMapper" >
+
+    <resultMap id="BaseResultMap" type="com.he.po.StudentStatus" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="basic_id" property="basicId" jdbcType="INTEGER" />
+        <result column="student_id" property="studentId" jdbcType="VARCHAR" />
+        <result column="class_id" property="classId" jdbcType="VARCHAR" />
+    </resultMap>
+    
+<!--     关联基础表 -->
+    <resultMap id="BaseResultMap1" type="com.he.po.StudentStatus" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="basic_id" property="basicId" jdbcType="INTEGER" />
+        <result column="student_id" property="studentId" jdbcType="VARCHAR" />
+        <result column="class_id" property="classId" jdbcType="VARCHAR" />
+        <association property="sb" column="basic_id" javaType="com.he.po.StudentBasic" 
+        select="com.he.dao.StudentBasicMapper.selectByPrimaryKey"/>
+        <association property="c" column="class_id" javaType="com.he.po.Class" 
+        select="com.he.dao.ClassMapper.selectByPrimaryKey"/>
+        
+    </resultMap>
+    
+
+    <sql id="Base_Column_List" >
+        id, basic_id, student_id, class_id
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap1" parameterType="java.lang.String" >
+        select 
+        <include refid="Base_Column_List" />
+        from student_status
+        where student_id = #{studentId,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from student_status
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insert" parameterType="com.he.po.StudentStatus" >
+        insert into student_status (id, basic_id, student_id, 
+            class_id)
+        values (#{id,jdbcType=INTEGER}, #{basicId,jdbcType=INTEGER}, #{studentId,jdbcType=VARCHAR}, 
+            #{classId,jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.he.po.StudentStatus" >
+        insert into student_status
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="basicId != null" >
+                basic_id,
+            </if>
+            <if test="studentId != null" >
+                student_id,
+            </if>
+            <if test="classId != null" >
+                class_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="basicId != null" >
+                #{basicId,jdbcType=INTEGER},
+            </if>
+            <if test="studentId != null" >
+                #{studentId,jdbcType=VARCHAR},
+            </if>
+            <if test="classId != null" >
+                #{classId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.he.po.StudentStatus" >
+        update student_status
+        <set >
+            <if test="basicId != null" >
+                basic_id = #{basicId,jdbcType=INTEGER},
+            </if>
+            <if test="studentId != null" >
+                student_id = #{studentId,jdbcType=VARCHAR},
+            </if>
+            <if test="classId != null" >
+                class_id = #{classId,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.he.po.StudentStatus" >
+        update student_status
+        set basic_id = #{basicId,jdbcType=INTEGER},
+            student_id = #{studentId,jdbcType=VARCHAR},
+            class_id = #{classId,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    
+    <!--  1.   初始化学籍表 -->
+    <insert id="insertInitStudentStatus"
+		parameterType="java.util.List">
+		insert into
+		student_status(basic_id,student_id,class_id)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(
+			 #{item.basicId,jdbcType=VARCHAR},
+			 #{item.studentId,jdbcType=VARCHAR},
+			 #{item.classId,jdbcType=VARCHAR}
+			)
+		</foreach>
+	</insert>
+	
+	<!-- 2.初始化班级编号 和初始学号-->
+	<update id="updateInitStudentIDandClass" parameterType="java.util.List">
+		
+    <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+        update 
+        student_status
+        <set>
+        	student_id = #{item.studentId,jdbcType=VARCHAR},
+            class_id = #{item.classId,jdbcType=VARCHAR}
+        </set>
+        <where>
+        <if test="item.id != null" >
+             id=#{item.id,jdbcType=INTEGER}
+            </if>
+            <if test="item.basicId != null" >
+           basic_id= #{item.basicId,jdbcType=INTEGER}
+            </if>
+        </where>	
+    	
+    </foreach>
+            		
+	</update>
+	
+	
+	
+<!-- 	 3.查询某个班级的所有学生 -->
+	<select id="selectStudentByClassID"  parameterType="java.lang.String" resultMap="BaseResultMap1">
+		 select 
+        <include refid="Base_Column_List" />
+        from student_status
+         <where> 
+            <if test="classid != null and classid != '' " >
+             and class_id = #{classid,jdbcType=VARCHAR}
+            </if>
+          </where> 
+	</select>
+	
+	
+	
+<!-- 	  4.按性别与专业查询所有没有班级的学生学籍信息 -->
+	
+	<select id="selectStudentBySexAndMajor"  parameterType="com.he.po.StudentBasic" resultMap="BaseResultMap1">
+		 select 
+         student_status.id, student_status.basic_id, student_status.student_id, student_status.class_id
+        from student_status,student_basic
+        where student_status.basic_id=student_basic.id and student_basic.sex=#{sex,jdbcType=VARCHAR} and student_basic.major=#{major,jdbcType=VARCHAR} and student_status.class_id='0'
+	</select>
+
+
+<!-- 	  5.按性别与班级专业查询所有学生学籍信息 -->
+
+	<select id="selectStudentBySexAndClass"  parameterType="java.lang.String" resultMap="BaseResultMap1">
+		 select 
+        student_status.id,student_status.basic_id, student_status.student_id, student_status.class_id
+        from student_status,student_basic
+        where student_status.basic_id=student_basic.id and student_basic.sex=#{sex,jdbcType=VARCHAR} and student_status.class_id=#{classid,jdbcType=VARCHAR}
+	
+	</select>
+	
+<!-- 	6.根据参数查询所有学生 -->
+	<select id="getStudentStatus"  parameterType="com.he.viewpo.DDMC" resultMap="BaseResultMap1">
+		 select 
+        student_status.id,student_status.basic_id, student_status.student_id, student_status.class_id
+        from student_status left join class on student_status.class_id=class.class_id
+        left join major on class.major_id=major.major_id
+        left join department on major.department_id=department.department_id
+        left join dept on department.dept_id=dept.dept_id
+		 <where> 
+            <if test="majorId != null and majorId != '' " >
+              and  major.major_id = #{majorId,jdbcType=VARCHAR}
+            </if>
+            
+            <if test="departmentId != null and departmentId !='' " >
+              and  department.department_id = #{departmentId,jdbcType=VARCHAR}
+            </if>
+            
+            <if test="deptId != null and deptId !='' " >
+              and  dept.dept_id = #{deptId,jdbcType=VARCHAR}
+            </if>
+            
+            <if test="classId != null and classId !='' " >
+              and  class.class_id = #{classId,jdbcType=VARCHAR}
+            </if>
+        </where>
+	</select>
+	
+	
+<!--    	7.修改某些学生的班级 -->
+<!--    	int deletelistclassformstudent(@Param("idlist")List<Integer> id,@Param("classId") String classId); -->
+	<update id="updatelistclassformstudent" parameterType="java.util.List">
+        update 
+        student_status
+         set class_id=#{classId,jdbcType=VARCHAR},
+         student_id=#{classId,jdbcType=VARCHAR}      
+    	where id in
+    	<foreach collection="idlist" item="item" index="index" open="(" close=")" separator=",">
+    			#{item,jdbcType=INTEGER}
+    	</foreach>
+            		
+	</update>
+	
+<!-- 	8.统计所有专业未加入班级的学生  <专业，数量>-->
+	<select id="selectMajorAndStudentSun"   resultType="com.he.viewpo.MajorAndStudent">
+		select student_basic.major as major,COUNT(*) as classnumber
+		from student_basic,student_status
+		where student_basic.id=student_status.basic_id and student_status.class_id='0'
+		GROUP BY(`major`)
+	</select>
+	
+<!-- 	//9.查询某专业未加入班级的学生 -->
+<!--    List<StudentStatus> getStudentByMajorId(String classId); -->
+	<select id="getStudentByMajorId" parameterType="java.lang.String"   resultMap="BaseResultMap1">
+		select a.id,a.basic_id, a.student_id, a.class_id 
+		from student_status as a ,student_basic as b ,major as  c
+		where a.basic_id= b.id and b.major=c.name and a.class_id='0'  and c.major_id=#{majorId,jdbcType=VARCHAR}
+	</select>
+	
+<!-- //10.根剧学生本身学号信息查询 -->
+<!--    List<StudentStatus> getStudentByStudentStatus( List<StudentStatus> sss); -->
+	<select id="getStudentByStudentStatus" parameterType="java.util.List"   resultMap="BaseResultMap1">
+	  	select 
+        <include refid="Base_Column_List" />  
+        from student_status   
+    	where student_id in
+    	<foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+    			#{item.studentId,jdbcType=VARCHAR}
+    	</foreach>
+	</select>
+	
+<!-- 	//11.查非初始学号中最大的学号， -->
+<!--    StudentStatus getMaxStudentId(StudentStatus s); -->
+
+<select id="getMaxStudentId" parameterType="com.he.po.StudentStatus"   resultMap="BaseResultMap1">		  	
+	  	select 
+        max(student_id) as student_id
+        from student_status   
+    	<where>
+    	class_id=#{classId}
+    	and
+    	student_id !=#{studentId}
+    	</where>  	
+	</select>
+
+
+   
+<!--    //12修改学号，解锁 -->
+<!--    int UpdateStudentId(StudentStatus s); -->
+	
+	<update id="UpdateStudentId" parameterType="com.he.po.StudentStatus">
+	  	 update 
+        student_status
+         set student_id=#{studentId,jdbcType=VARCHAR}      
+    	where id =#{id}
+	</update>
+	
+<!-- 13根据用户查询学籍信息	getStudentStatusByUsers -->
+	<select id="getStudentStatusByUsers" parameterType="com.he.po.Users"   resultMap="BaseResultMap1">
+	  	select a.id,a.basic_id, a.student_id, a.class_id 
+		from student_status as a ,student_basic as b
+		where a.basic_id=b.id and b.ID_number=#{username}
+    	limit 1  	
+	</select>
+	
+<!-- 	//15根据学生基本ID查询学生学籍 -->
+<!-- 	    StudentStatus getStudentStatusByStudentBasic(StudentBasic sb); -->
+	   <select id="getStudentStatusByStudentBasic" parameterType="com.he.po.StudentBasic"   resultMap="BaseResultMap1">
+	  	select 
+        <include refid="Base_Column_List" />  
+        from student_status  
+		where basic_id=#{id}
+    	limit 1  	
+	</select>
+	
+	
+	
+</mapper>

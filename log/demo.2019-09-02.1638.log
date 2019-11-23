@@ -1,0 +1,16 @@
+2019-09-02 19:17:37,382 DEBUG (BaseJdbcLogger.java:143)- <======      Total: 1
+2019-09-02 19:17:37,387 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-02 19:17:37,388 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-02 19:17:37,388 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 0
+2019-09-02 19:17:37,389 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select dormitory.id, dormitory.dong, dormitory.floor,dormitory.room, dormitory.sex, dormitory.number,dormitory.rent from dormitory ,dormitory_registration where dormitory.id=dormitory_registration.dormitory_id and dormitory_registration.student_id = ? 
+2019-09-02 19:17:37,390 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 1938050103(String)
+2019-09-02 19:17:37,389 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-02 19:17:37,391 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-02 19:17:37,392 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, major_id, name, price, department_id from major where major_id = ? 
+2019-09-02 19:17:37,393 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 080901(String)
+2019-09-02 19:17:37,394 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-02 19:17:37,395 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, pipeline_id, student_id, time, money, remarks from pay WHERE student_id = ? 
+2019-09-02 19:17:37,395 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 1938050103(String)
+2019-09-02 19:17:37,397 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 2
+2019-09-02 19:17:37,398 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, student_id, state from apply WHERE student_id= ? 
+2019-09-02 19:17:37,399 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 1938050103(String)

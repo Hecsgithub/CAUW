@@ -1,0 +1,16 @@
+2019-09-24 18:45:03,819 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 3
+2019-09-24 18:45:05,037 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select class.*,major.name as major,department.name as department,dept.name as dept from class left join major on class.major_id=major.major_id left join department on major.department_id=department.department_id left join dept on department.dept_id=dept.dept_id 
+2019-09-24 18:45:05,039 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 18:45:05,038 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, major_id, name, price, department_id from major 
+2019-09-24 18:45:05,040 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 18:45:05,043 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 16
+2019-09-24 18:45:05,046 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, department_id, name, director, dept_id from department 
+2019-09-24 18:45:05,047 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 18:45:05,048 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 23
+2019-09-24 18:45:05,050 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 10
+2019-09-24 18:45:05,050 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, dept_id, name, director from dept where name!='教务处' and name!='舍管科' 
+2019-09-24 18:45:05,050 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 18:45:05,051 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 3
+2019-09-24 18:45:05,052 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select teacher.id,teacher.teacher_id, teacher.password, teacher.name, teacher.sex, teacher.phone, teacher.email, teacher.adress FROM teacher LEFT JOIN users on teacher.teacher_id=users.username LEFT JOIN user_role on users.id=user_role.user_id LEFT JOIN role on user_role.role_id=role.id where role.name=? 
+2019-09-24 18:45:05,053 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 班主任(String)
+2019-09-24 18:45:05,058 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select a.id, a.role_id, a.name from role as a,user_role as b where a.id=b.role_id and b.user_id=? 

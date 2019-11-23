@@ -1,0 +1,18 @@
+2019-09-05 11:45:42,260 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select m1.`id`,m1.`url`,m1.`path`,m1.`component`,m1.`iconCls`,m1.`name`,m1.`requireAuth` ,m1.`iconCls`,m1.`keepAlive`,m1.`parentId`,m1.`enabled` ,m2.`component`as component2,m2.`iconCls` as iconCls2,m2.`keepAlive` as keepAlive2,m2.`name` as name2,m2.`path` as path2,m2.`requireAuth` as requireAuth2 ,m2.`url` as url2,m2.`id` as id2,m2.`parentId` as parentId2,m2.`enabled` as enabled2 from menu m1,menu m2 where m1.`id`=m2.`parentId` order by m1.`id`,m2.`id` 
+2019-09-05 11:45:42,263 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-05 11:45:42,269 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 17
+2019-09-05 11:45:43,698 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, username, password, type from users 
+2019-09-05 11:45:43,701 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-05 11:45:43,704 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select a.id, a.role_id, a.name from role as a,user_role as b where a.id=b.role_id and b.user_id=? 
+2019-09-05 11:45:43,705 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 1(Integer)
+2019-09-05 11:45:43,706 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-05 11:45:43,706 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select a.id, a.role_id, a.name from role as a,user_role as b where a.id=b.role_id and b.user_id=? 
+2019-09-05 11:45:43,706 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 2(Integer)
+2019-09-05 11:45:43,707 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-05 11:45:43,708 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select a.id, a.role_id, a.name from role as a,user_role as b where a.id=b.role_id and b.user_id=? 
+2019-09-05 11:45:43,708 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 3(Integer)
+2019-09-05 11:45:43,709 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-05 11:45:43,709 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select a.id, a.role_id, a.name from role as a,user_role as b where a.id=b.role_id and b.user_id=? 
+2019-09-05 11:45:43,709 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 4(Integer)
+2019-09-05 11:45:43,710 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-05 11:45:43,710 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select a.id, a.role_id, a.name from role as a,user_role as b where a.id=b.role_id and b.user_id=? 

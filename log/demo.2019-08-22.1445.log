@@ -1,0 +1,16 @@
+2019-08-22 22:25:40,229 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-08-22 22:25:40,233 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 22
+2019-08-22 22:25:46,218 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: SELECT a.* from dormitory_allocation as a ,dormitory as b where a.dormitory_id=b.id and a.number < b.number and b.sex=? and a.dormitory_id in ( SELECT dormitory_id from dormitory_allocation GROUP BY (dormitory_id) HAVING COUNT(dormitory_id) = 1 ) 
+2019-08-22 22:25:46,219 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 男(String)
+2019-08-22 22:25:46,222 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, dong, floor, room, sex, number, rent from dormitory where id = ? 
+2019-08-22 22:25:46,223 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 67(Integer)
+2019-08-22 22:25:46,235 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-08-22 22:25:46,236 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-08-22 22:25:46,238 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: SELECT a.* from dormitory_allocation as a ,dormitory as b where a.dormitory_id=b.id and b.sex=? GROUP BY (a.dormitory_id) HAVING COUNT(a.dormitory_id)>1 
+2019-08-22 22:25:46,240 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 男(String)
+2019-08-22 22:25:46,243 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 9
+2019-08-22 22:25:46,245 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select dormitory_allocation.id, dormitory_allocation.class_id, dormitory_allocation.dormitory_id,dormitory_allocation.number from dormitory_allocation,dormitory WHERE dormitory_allocation.dormitory_id=dormitory.id and dormitory_id = ? 
+2019-08-22 22:25:46,246 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 4(Integer)
+2019-08-22 22:25:46,247 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, dong, floor, room, sex, number, rent from dormitory where id = ? 
+2019-08-22 22:25:46,250 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 4(Integer)
+2019-08-22 22:25:46,255 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1

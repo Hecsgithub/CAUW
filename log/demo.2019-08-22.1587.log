@@ -1,0 +1,8 @@
+2019-08-22 22:37:46,815 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 4(Integer)
+2019-08-22 22:37:46,820 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, dong, floor, room, sex, number, rent from dormitory where id = ? 
+2019-08-22 22:37:46,821 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 4(Integer)
+2019-08-22 22:37:46,823 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-08-22 22:37:46,824 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 2
+2019-08-22 22:37:46,825 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select dormitory_allocation.id, dormitory_allocation.class_id, dormitory_allocation.dormitory_id,dormitory_allocation.number from dormitory_allocation,dormitory WHERE dormitory_allocation.dormitory_id=dormitory.id and dormitory_id = ? 
+2019-08-22 22:37:46,826 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 32(Integer)
+2019-08-22 22:37:46,827 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, dong, floor, room, sex, number, rent from dormitory where id = ? 

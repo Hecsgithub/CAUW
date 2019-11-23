@@ -1,0 +1,8 @@
+2019-09-05 12:22:27,078 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select m1.`id`,m1.`url`,m1.`path`,m1.`component`,m1.`iconCls`,m1.`name`,m1.`requireAuth` ,m1.`iconCls`,m1.`keepAlive`,m1.`parentId`,m1.`enabled` ,m2.`component`as component2,m2.`iconCls` as iconCls2,m2.`keepAlive` as keepAlive2,m2.`name` as name2,m2.`path` as path2,m2.`requireAuth` as requireAuth2 ,m2.`url` as url2,m2.`id` as id2,m2.`parentId` as parentId2,m2.`enabled` as enabled2 from menu m1,menu m2 where m1.`id`=m2.`parentId` order by m1.`id`,m2.`id` 
+2019-09-05 12:22:27,086 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-05 12:22:27,089 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 18
+2019-09-05 12:22:30,535 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, role_id, name from role 
+2019-09-05 12:22:30,536 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-05 12:22:30,537 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 8
+2019-09-05 12:22:34,596 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select m1.`id`,m1.`url`,m1.`path`,m1.`component`,m1.`iconCls`,m1.`name`,m1.`requireAuth` ,m1.`iconCls`,m1.`keepAlive`,m1.`parentId`,m1.`enabled` ,m2.`component`as component2,m2.`iconCls` as iconCls2,m2.`keepAlive` as keepAlive2,m2.`name` as name2,m2.`path` as path2,m2.`requireAuth` as requireAuth2 ,m2.`url` as url2,m2.`id` as id2,m2.`parentId` as parentId2,m2.`enabled` as enabled2 from menu m1,menu m2 where m1.`id`=m2.`parentId` and m2.`id` not in (select mr.`menu_id` from role r,menu_role mr where r.`id`=mr.`role_id` and r.role_id =? ) order by m1.`id`,m2.`id` 
+2019-09-05 12:22:34,597 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: ROLE_TEACH(String)

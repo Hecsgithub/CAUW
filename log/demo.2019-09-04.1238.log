@@ -1,0 +1,8 @@
+2019-09-04 03:59:32,369 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: insert into dormitory_allocation (class_id, dormitory_id,number) values ( ?, ?, ? ) 
+2019-09-04 03:59:32,372 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 080702201903(String), 19(Integer), 5(Integer)
+2019-09-04 03:59:32,376 DEBUG (BaseJdbcLogger.java:143)- <==    Updates: 1
+2019-09-04 03:59:32,376 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, dong, floor, room, sex, number, rent,hasnumber from dormitory where id = ? 
+2019-09-04 03:59:32,377 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 19(Integer)
+2019-09-04 03:59:32,378 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-04 03:59:32,379 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: update dormitory set dong = ?, floor = ?, room = ?, sex = ?, number = ?, rent = ?, hasnumber = ? where id = ? 
+2019-09-04 03:59:32,402 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 1A(String), 1(Integer), 19(Integer), 男(String), 5(Integer), 1250(String), 5(Integer), 19(Integer)

@@ -1,0 +1,15 @@
+2019-09-23 04:37:11,122 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-23 04:37:11,132 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 47
+2019-09-23 04:37:11,121 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, teacher_id, password, name, sex, phone, email, adress from teacher where teacher_id = ? 
+2019-09-23 04:37:11,139 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-23 04:37:11,149 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select student_status.id, student_status.basic_id, student_status.student_id, student_status.class_id from student_status,student_basic where student_status.basic_id=student_basic.id and student_basic.sex=? and student_basic.major=? and student_status.class_id='0' 
+2019-09-23 04:37:11,149 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 2019717(String)
+2019-09-23 04:37:11,149 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-23 04:37:11,187 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 男(String), 工业设计(String)
+2019-09-23 04:37:11,189 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-23 04:37:11,190 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select student_status.id, student_status.basic_id, student_status.student_id, student_status.class_id from student_status,student_basic where student_status.basic_id=student_basic.id and student_basic.sex=? and student_basic.major=? and student_status.class_id='0' 
+2019-09-23 04:37:11,190 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select a.id, a.role_id, a.name from role as a,user_role as b where a.id=b.role_id and b.user_id=? 
+2019-09-23 04:37:11,190 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 女(String), 工业设计(String)
+2019-09-23 04:37:11,191 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 2019717(Integer)
+2019-09-23 04:37:11,191 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-23 04:37:11,192 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select student_status.id, student_status.basic_id, student_status.student_id, student_status.class_id from student_status,student_basic where student_status.basic_id=student_basic.id and student_basic.sex=? and student_basic.major=? and student_status.class_id='0' 

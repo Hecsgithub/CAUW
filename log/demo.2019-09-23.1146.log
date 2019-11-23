@@ -1,0 +1,9 @@
+2019-09-23 04:36:30,919 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select major.*, Class.id as cid, Class.class_id as cclass_id, Class.name as cname, Class.director as cdirector, Class.grade as cgrade, Class.major_id as cmajor_id from major,Class WHERE major.major_id=Class.major_id 
+2019-09-23 04:36:30,922 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-23 04:36:30,925 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 47
+2019-09-23 04:36:31,013 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, dept_id, name, director from dept where name!='教务处' and name!='舍管科' 
+2019-09-23 04:36:31,014 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-23 04:36:31,015 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 3
+2019-09-23 04:36:36,336 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select major from student_basic where state='0' GROUP BY(major) 
+2019-09-23 04:36:36,336 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-23 04:36:36,337 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0

@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.he.dao.StudentBasicMapper">
+
+	<resultMap id="BaseResultMap" type="com.he.po.StudentBasic">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="sex" property="sex" jdbcType="VARCHAR" />
+		<result column="birthday" property="birthday"
+			jdbcType="VARCHAR" />
+		<result column="phone" property="phone" jdbcType="CHAR" />
+		<result column="ID_number" property="idNumber" jdbcType="CHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="parent_phone" property="parentPhone"
+			jdbcType="CHAR" />
+		<result column="adress" property="adress" jdbcType="VARCHAR" />
+		<result column="major" property="major" jdbcType="VARCHAR" />
+		<result column="state" property="state" jdbcType="CHAR" />
+	</resultMap>
+
+
+<!-- 与Role关联 -->
+	<resultMap id="BaseResultMap1" type="com.he.po.StudentBasic">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="sex" property="sex" jdbcType="VARCHAR" />
+		<result column="birthday" property="birthday"
+			jdbcType="VARCHAR" />
+		<result column="phone" property="phone" jdbcType="CHAR" />
+		<result column="ID_number" property="idNumber" jdbcType="CHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+		<result column="parent_phone" property="parentPhone"
+			jdbcType="CHAR" />
+		<result column="adress" property="adress" jdbcType="VARCHAR" />
+		<result column="major" property="major" jdbcType="VARCHAR" />
+		<result column="state" property="state" jdbcType="CHAR" />
+		 <association property="roles" column="id" javaType="com.he.po.Role" 
+        select="com.he.dao.RoleMapper.selectRoleByUserId"/>
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, name, sex, birthday, phone, ID_number, email, parent_phone, adress,
+		major, state
+	</sql>
+
+<!--6.  修改原程序 根据basic_id获取整个Basic -->
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from student_basic
+		where id = #{basicId,jdbcType=VARCHAR}
+	</select>
+
+	<delete id="deleteByPrimaryKey"
+		parameterType="java.lang.Integer">
+		delete from student_basic
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+
+	<insert id="insert" parameterType="com.he.po.StudentBasic">
+		insert into student_basic (id, name, sex,
+		birthday, phone, ID_number,
+		email, parent_phone, adress,
+		major, state)
+		values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR},
+		#{sex,jdbcType=VARCHAR},
+		#{birthday,jdbcType=VARCHAR}, #{phone,jdbcType=CHAR}, #{idNumber,jdbcType=CHAR},
+		#{email,jdbcType=VARCHAR}, #{parentPhone,jdbcType=CHAR},
+		#{adress,jdbcType=VARCHAR},
+		#{major,jdbcType=VARCHAR}, #{state,jdbcType=CHAR})
+	</insert>
+
+<!-- 10.插入新生数据 -->
+	<insert id="insertSelective"
+		parameterType="com.he.po.StudentBasic">
+		insert into student_basic
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="sex != null">
+				sex,
+			</if>
+			<if test="birthday != null">
+				birthday,
+			</if>
+			<if test="phone != null">
+				phone,
+			</if>
+			<if test="idNumber != null">
+				ID_number,
+			</if>
+			<if test="email != null">
+				email,
+			</if>
+			<if test="parentPhone != null">
+				parent_phone,
+			</if>
+			<if test="adress != null">
+				adress,
+			</if>
+			<if test="major != null">
+				major,
+			</if>
+			<if test="state != null">
+				state,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null">
+				#{sex,jdbcType=VARCHAR},
+			</if>
+			<if test="birthday != null">
+				#{birthday,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				#{phone,jdbcType=CHAR},
+			</if>
+			<if test="idNumber != null">
+				#{idNumber,jdbcType=CHAR},
+			</if>
+			<if test="email != null">
+				#{email,jdbcType=VARCHAR},
+			</if>
+			<if test="parentPhone != null">
+				#{parentPhone,jdbcType=CHAR},
+			</if>
+			<if test="adress != null">
+				#{adress,jdbcType=VARCHAR},
+			</if>
+			<if test="major != null">
+				#{major,jdbcType=VARCHAR},
+			</if>
+			<if test="state != null">
+				#{state,jdbcType=CHAR},
+			</if>
+		</trim>
+	</insert>
+	
+<!-- 9.修改信息 -->
+	<update id="updateByPrimaryKeySelective"
+		parameterType="com.he.po.StudentBasic">
+		update student_basic
+		<set>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null">
+				sex = #{sex,jdbcType=VARCHAR},
+			</if>
+			<if test="birthday != null">
+				birthday = #{birthday,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				phone = #{phone,jdbcType=CHAR},
+			</if>
+			<if test="idNumber != null">
+				ID_number = #{idNumber,jdbcType=CHAR},
+			</if>
+			<if test="email != null">
+				email = #{email,jdbcType=VARCHAR},
+			</if>
+			<if test="parentPhone != null">
+				parent_phone = #{parentPhone,jdbcType=CHAR},
+			</if>
+			<if test="adress != null">
+				adress = #{adress,jdbcType=VARCHAR},
+			</if>
+			<if test="major != null">
+				major = #{major,jdbcType=VARCHAR},
+			</if>
+			<if test="state != null">
+				state = #{state,jdbcType=CHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+
+	<update id="updateByPrimaryKey"
+		parameterType="com.he.po.StudentBasic">
+		update student_basic
+		set name = #{name,jdbcType=VARCHAR},
+		sex = #{sex,jdbcType=VARCHAR},
+		birthday = #{birthday,jdbcType=VARCHAR},
+		phone = #{phone,jdbcType=CHAR},
+		ID_number = #{idNumber,jdbcType=CHAR},
+		email = #{email,jdbcType=VARCHAR},
+		parent_phone = #{parentPhone,jdbcType=CHAR},
+		adress = #{adress,jdbcType=VARCHAR},
+		major = #{major,jdbcType=VARCHAR},
+		state = #{state,jdbcType=CHAR}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<!--1. excel表插入 -->
+
+	<insert id="insertExcelStudentBasic"
+		parameterType="java.util.List">
+		insert into
+		student_basic(name,sex,birthday,phone,ID_number,email,parent_phone,adress,major,state)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.name,jdbcType=VARCHAR},
+			#{item.sex,jdbcType=VARCHAR},
+			#{item.birthday,jdbcType=VARCHAR},
+			#{item.phone,jdbcType=CHAR},
+			#{item.idNumber,jdbcType=CHAR},
+			#{item.email,jdbcType=VARCHAR},
+			#{item.parentPhone,jdbcType=CHAR},
+			#{item.adress,jdbcType=VARCHAR},
+			#{item.major,jdbcType=VARCHAR},
+			#{item.state,jdbcType=CHAR})
+		</foreach>
+	</insert>
+
+
+	<!-- 2. 查询所有 -->
+	<select id="selectAllStudentBasic" parameterType="com.he.po.StudentBasic"  resultMap="BaseResultMap1">
+		select
+		<include refid="Base_Column_List" />
+		from student_basic
+		<where>
+			<if test="state != null and state !=''">
+			and	state = #{state,jdbcType=CHAR}
+			</if>
+		</where>
+	</select>
+
+	<!-- 3. 按性别与专业查询 -->
+	<select id="selectStudentBasicBySexAndMajor"
+		parameterType="com.he.po.StudentBasic" resultMap="BaseResultMap1">
+		select
+		<include refid="Base_Column_List" />
+		from student_basic
+		where sex=#{sex,jdbcType=VARCHAR} and
+		major=#{major,jdbcType=VARCHAR} and state='0'
+	</select>
+
+	<!-- 4. 按专业查询 -->
+	<select id="selectStudentBasicByMajor"
+		parameterType="com.he.po.StudentBasic" resultMap="BaseResultMap1">
+		select
+		<include refid="Base_Column_List" />
+		from student_basic
+		where major=#{major,jdbcType=VARCHAR} and state='0'
+	</select>
+
+	<!-- 5.查询专业数量 -->
+	<select id="selectCountMajor" resultType="java.lang.String">
+		select
+		major
+		from
+		student_basic
+		where state='0'
+		GROUP BY(major)
+	</select>
+	
+<!-- 	// 7.根据身份证号查信息 -->
+	<select id="selectByIdNumber"  parameterType="java.lang.String" resultMap="BaseResultMap1" >
+		select
+		<include refid="Base_Column_List" />
+		from 
+		student_basic
+		where ID_number=#{idnumber}
+		limit 1
+	</select>
+	
+	
+	<!-- 8. 有参数的查询所有 -->
+	<select id="selectAllStudentBasicHas" resultMap="BaseResultMap1" parameterType="com.he.po.StudentBasic">
+		select
+		<include refid="Base_Column_List" />
+		from student_basic
+		<where>
+			<if test="name != null and name !=''">
+			and	name = #{name,jdbcType=VARCHAR}
+			</if>
+			<if test="sex != null and sex !=''">
+			and	sex = #{sex,jdbcType=VARCHAR}
+			</if>
+			<if test="idNumber != null and idNumber !=''">
+			and	ID_number = #{idNumber,jdbcType=CHAR}
+			</if>
+			<if test="major != null and major !=''">
+			and	major = #{major,jdbcType=VARCHAR}
+			</if>
+			<if test="state != null and state !=''">
+			and	state = #{state,jdbcType=CHAR}
+			</if>
+		</where>
+		
+	</select>
+
+
+<!--     11.批量删除新生 -->
+     
+    <delete id="deleteListStudentBasic" parameterType="java.util.List" >
+    delete from student_basic where id in
+    <foreach collection="list" item="item" open="(" close=")" separator=",">
+      #{item,jdbcType=INTEGER}
+    </foreach>
+    </delete>   
+    
+
+<!--    	 12.修改已分配好班级学生的分班状态 -->
+<update id="updateStateByStatus"
+		parameterType="java.util.List">
+		update student_basic
+		set state = '1'
+		where id in 
+		 <foreach collection="list" item="item" open="(" close=")" separator=",">
+      	#{item.basicId,jdbcType=INTEGER}
+    	</foreach>
+	</update>
+
+
+<!-- 	//13查某班级学生的基本信息 -->
+   	
+<!--    	List<StudentBasic> selectClassStudentBasic(StudentStatus ss); -->
+	<select id="selectClassStudentBasic"  parameterType="com.he.po.StudentStatus" resultMap="BaseResultMap" >
+		select a.* 
+		from student_basic as a,student_status b 
+		where a.id=b.basic_id and b.class_id = #{classId,jdbcType=VARCHAR}
+	</select>
+
+<!-- //14查询没有链接用户的学生 -->
+   	
+<!--    	List<StudentBasic> selectNoUsersStudentBasic(); -->
+<select id="selectNoUsersStudentBasic"   resultMap="BaseResultMap" >
+		select a.* 
+		from student_basic as a
+		where a.ID_number not in(
+			select users.username
+			from users
+			where users.type='student_basic'
+	</select>
+
+<!-- 	//15.重置分班状态 -->
+   	
+<!--    	int updateStudentBasicState(List<Integer> ids); -->
+<update id="updateStudentBasicState"
+		parameterType="java.util.List">
+		update student_basic
+		set student_basic.state = '0'
+		where student_basic.id in (
+			select student_status.basic_id
+			from student_status
+			where student_status.id in 
+			<foreach collection="list" item="item" open="(" close=")" separator=",">
+      		#{item,jdbcType=INTEGER}
+    		</foreach>
+		)
+		 
+	</update>
+
+<!-- //16查重复 -->
+<!--  	   List<StudentBasic> selectStudentBasicHasIdentical(StudentBasic sb); -->
+
+<!-- 16查重复 -->
+	<select id="selectStudentBasicHasIdentical" resultMap="BaseResultMap1" parameterType="com.he.po.StudentBasic">
+		select
+		<include refid="Base_Column_List" />
+		from student_basic
+		<where>
+			<if test="idNumber != null">
+			or	ID_number = #{idNumber,jdbcType=CHAR}
+			</if>
+		</where>
+		
+	</select>
+
+</mapper>

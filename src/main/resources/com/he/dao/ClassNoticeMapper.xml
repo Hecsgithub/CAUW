@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.he.dao.ClassNoticeMapper" >
+
+    <resultMap id="BaseResultMap" type="com.he.po.ClassNotice" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="class_id" property="classId" jdbcType="VARCHAR" />
+        <result column="notice_word" property="noticeWord" jdbcType="VARCHAR" />
+        <result column="time" property="time" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, class_id, notice_word, time
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from class_notice
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from class_notice
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    
+
+    <insert id="insertSelective" parameterType="com.he.po.ClassNotice" >
+        insert into class_notice
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="classId != null" >
+                class_id,
+            </if>
+            <if test="noticeWord != null" >
+                notice_word,
+            </if>
+            <if test="time != null" >
+                time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="classId != null" >
+                #{classId,jdbcType=VARCHAR},
+            </if>
+            <if test="noticeWord != null" >
+                #{noticeWord,jdbcType=VARCHAR},
+            </if>
+            <if test="time != null" >
+                #{time,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.he.po.ClassNotice" >
+        update class_notice
+        <set >
+            <if test="classId != null" >
+                class_id = #{classId,jdbcType=VARCHAR},
+            </if>
+            <if test="noticeWord != null" >
+                notice_word = #{noticeWord,jdbcType=VARCHAR},
+            </if>
+            <if test="time != null" >
+                time = #{time,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.he.po.ClassNotice" >
+        update class_notice
+        set class_id = #{classId,jdbcType=VARCHAR},
+            notice_word = #{noticeWord,jdbcType=VARCHAR},
+            time = #{time,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    
+<!--      //1.插入通知 -->
+<!--     int insert(ClassNotice record); -->
+    <insert id="insert" parameterType="com.he.po.ClassNotice" >
+        insert into class_notice (class_id, notice_word, 
+            time)
+        values ( #{classId,jdbcType=VARCHAR}, #{noticeWord,jdbcType=VARCHAR}, 
+            #{time,jdbcType=VARCHAR})
+    </insert>
+    
+<!--     //2.批量删除 -->
+<!--     int deleteListClassNotice(List<Integer> ids); -->
+    <delete id="deleteListClassNotice" parameterType="java.util.List" >
+        delete from class_notice
+        where id in 
+        <foreach collection="list" item="item" open="(" close=")" separator=",">
+      #{item,jdbcType=INTEGER}
+    	</foreach>
+    </delete>
+<!--     //3.修改通知 -->
+<!--     int updateClassBotice(ClassNotice record); -->
+     <update id="updateClassBotice" parameterType="com.he.po.ClassNotice" >
+        update class_notice
+        <set > 
+            <if test="noticeWord != null" >
+                notice_word = #{noticeWord,jdbcType=VARCHAR},
+            </if>
+            <if test="time != null" >
+                time = #{time,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+<!--   //4.查询通知 -->
+<!--     List<ClassNotice> getAllClassBotice(String classId);  -->
+    <select id="getAllClassBotice" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select 
+        <include refid="Base_Column_List" />
+        from class_notice
+        where class_id = #{classId,jdbcType=VARCHAR}
+    </select>
+    
+    
+</mapper>

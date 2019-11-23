@@ -1,0 +1,13 @@
+2019-09-24 19:45:58,610 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, major_id, name, price, department_id from major 
+2019-09-24 19:45:58,612 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 19:45:58,614 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic WHERE state = ? 
+2019-09-24 19:45:58,615 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 16
+2019-09-24 19:45:58,615 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 0(String)
+2019-09-24 19:45:58,616 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-24 19:45:58,648 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic 
+2019-09-24 19:45:58,649 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 19:45:58,649 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-24 19:45:59,322 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select major from student_basic where state='0' GROUP BY(major) 
+2019-09-24 19:45:59,323 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 19:45:59,323 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select major.*, Class.id as cid, Class.class_id as cclass_id, Class.name as cname, Class.director as cdirector, Class.grade as cgrade, Class.major_id as cmajor_id from major,Class WHERE major.major_id=Class.major_id 
+2019-09-24 19:45:59,324 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 

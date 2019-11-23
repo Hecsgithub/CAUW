@@ -1,0 +1,10 @@
+2019-09-02 12:41:11,691 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select major.*, Class.id as cid, Class.class_id as cclass_id, Class.name as cname, Class.director as cdirector, Class.grade as cgrade, Class.major_id as cmajor_id from major,Class ,Users WHERE major.major_id=Class.major_id and Class.director=Users.username and Users.username = ? 
+2019-09-02 12:41:11,693 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 2019731(String)
+2019-09-02 12:41:11,697 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 4
+2019-09-02 12:41:13,078 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, basic_id, student_id, class_id from student_status where class_id = ? 
+2019-09-02 12:41:13,078 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: undefined(String)
+2019-09-02 12:41:13,082 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-02 12:41:13,124 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select a.* from student_basic as a,student_status b where a.id=b.basic_id and b.class_id = ? 
+2019-09-02 12:41:13,125 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: undefined(String)
+2019-09-02 12:41:13,126 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-02 12:41:13,127 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, basic_id, student_id, class_id from student_status where class_id = ? 

@@ -1,0 +1,8 @@
+2019-10-28 00:05:47,354 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select dormitory.id, dormitory.dong, dormitory.floor, dormitory.room, dormitory.sex, dormitory.number, dormitory.rent, dormitory.hasnumber from dormitory LEFT JOIN dormitory_allocation on dormitory_allocation.dormitory_id = dormitory.id LEFT JOIN class on dormitory_allocation.class_id=class.class_id LEFT JOIN major on class.major_id=major.major_id WHERE dong = ? and floor = ? group by dormitory.dong,dormitory.floor,dormitory.room 
+2019-10-28 00:05:47,358 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 1A(String), 2(Integer)
+2019-10-28 00:05:47,370 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 50
+2019-10-28 00:05:54,280 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, class_id, name, director, grade, major_id from class 
+2019-10-28 00:05:54,280 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select DISTINCT dormitory.dong from dormitory where dormitory.sex=? 
+2019-10-28 00:05:54,294 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-10-28 00:05:54,294 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 女(String)
+2019-10-28 00:05:54,295 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, major_id, name, price, department_id from major where major_id = ? 

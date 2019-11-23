@@ -1,0 +1,8 @@
+2019-09-05 17:11:28,495 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select COUNT(student_status.id) from student_status left join class on student_status.class_id=class.class_id left join major on class.major_id=major.major_id left join department on major.department_id=department.department_id left join dept on department.dept_id=dept.dept_id WHERE student_status.student_id not in (SELECT pay.student_id from pay) 
+2019-09-05 17:11:28,495 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, dept_id, name, director from dept where name!='教务处' and name!='舍管科' 
+2019-09-05 17:11:28,499 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-05 17:11:28,499 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-05 17:11:28,511 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 3
+2019-09-05 17:11:28,514 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-05 17:11:28,515 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select COUNT(student_status.id) from student_status left join class on student_status.class_id=class.class_id left join major on class.major_id=major.major_id left join department on major.department_id=department.department_id left join dept on department.dept_id=dept.dept_id WHERE student_status.student_id in (SELECT pay.student_id from pay) 
+2019-09-05 17:11:28,516 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 

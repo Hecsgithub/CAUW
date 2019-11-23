@@ -1,0 +1,53 @@
+2019-09-02 12:38:37,044 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: SELECT a.* from dormitory_allocation as a ,dormitory as b where a.dormitory_id=b.id and a.number < b.number and b.sex=? and a.dormitory_id in ( SELECT dormitory_id from dormitory_allocation GROUP BY (dormitory_id) HAVING COUNT(dormitory_id) = 1 ) 
+2019-09-02 12:38:37,049 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 男(String)
+2019-09-02 12:38:37,051 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-02 12:38:37,052 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: SELECT a.* from dormitory_allocation as a ,dormitory as b where a.dormitory_id=b.id and b.sex=? GROUP BY (a.dormitory_id) HAVING COUNT(a.dormitory_id)>1 
+2019-09-02 12:38:37,053 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 男(String)
+2019-09-02 12:38:37,060 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 10
+2019-09-02 12:38:37,061 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select dormitory_allocation.id, dormitory_allocation.class_id, dormitory_allocation.dormitory_id,dormitory_allocation.number from dormitory_allocation,dormitory WHERE dormitory_allocation.dormitory_id=dormitory.id and dormitory_id = ? 
+2019-09-02 12:38:37,062 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 4(Integer)
+2019-09-02 12:38:37,063 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, dong, floor, room, sex, number, rent from dormitory where id = ? 
+2019-09-02 12:38:37,064 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 4(Integer)
+2019-09-02 12:38:37,065 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-02 12:38:37,066 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 2
+2019-09-02 12:38:37,066 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select dormitory_allocation.id, dormitory_allocation.class_id, dormitory_allocation.dormitory_id,dormitory_allocation.number from dormitory_allocation,dormitory WHERE dormitory_allocation.dormitory_id=dormitory.id and dormitory_id = ? 
+2019-09-02 12:38:37,067 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 32(Integer)
+2019-09-02 12:38:37,068 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, dong, floor, room, sex, number, rent from dormitory where id = ? 
+2019-09-02 12:38:37,068 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 32(Integer)
+2019-09-02 12:38:37,070 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-02 12:38:37,071 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 2
+2019-09-02 12:38:37,072 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select dormitory_allocation.id, dormitory_allocation.class_id, dormitory_allocation.dormitory_id,dormitory_allocation.number from dormitory_allocation,dormitory WHERE dormitory_allocation.dormitory_id=dormitory.id and dormitory_id = ? 
+2019-09-02 12:38:37,073 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 37(Integer)
+2019-09-02 12:38:37,074 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, dong, floor, room, sex, number, rent from dormitory where id = ? 
+2019-09-02 12:38:37,075 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 37(Integer)
+2019-09-02 12:38:37,079 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-02 12:38:37,081 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 2
+2019-09-02 12:38:37,083 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select dormitory_allocation.id, dormitory_allocation.class_id, dormitory_allocation.dormitory_id,dormitory_allocation.number from dormitory_allocation,dormitory WHERE dormitory_allocation.dormitory_id=dormitory.id and dormitory_id = ? 
+2019-09-02 12:38:37,084 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 42(Integer)
+2019-09-02 12:38:37,086 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, dong, floor, room, sex, number, rent from dormitory where id = ? 
+2019-09-02 12:38:37,087 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 42(Integer)
+2019-09-02 12:38:37,090 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-02 12:38:37,093 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 2
+2019-09-02 12:38:37,095 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select dormitory_allocation.id, dormitory_allocation.class_id, dormitory_allocation.dormitory_id,dormitory_allocation.number from dormitory_allocation,dormitory WHERE dormitory_allocation.dormitory_id=dormitory.id and dormitory_id = ? 
+2019-09-02 12:38:37,096 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 47(Integer)
+2019-09-02 12:38:37,097 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, dong, floor, room, sex, number, rent from dormitory where id = ? 
+2019-09-02 12:38:37,098 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 47(Integer)
+2019-09-02 12:38:37,099 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-02 12:38:37,100 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 2
+2019-09-02 12:38:37,101 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select dormitory_allocation.id, dormitory_allocation.class_id, dormitory_allocation.dormitory_id,dormitory_allocation.number from dormitory_allocation,dormitory WHERE dormitory_allocation.dormitory_id=dormitory.id and dormitory_id = ? 
+2019-09-02 12:38:37,102 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 52(Integer)
+2019-09-02 12:38:37,104 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, dong, floor, room, sex, number, rent from dormitory where id = ? 
+2019-09-02 12:38:37,105 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 52(Integer)
+2019-09-02 12:38:37,109 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-02 12:38:37,111 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 2
+2019-09-02 12:38:37,116 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select dormitory_allocation.id, dormitory_allocation.class_id, dormitory_allocation.dormitory_id,dormitory_allocation.number from dormitory_allocation,dormitory WHERE dormitory_allocation.dormitory_id=dormitory.id and dormitory_id = ? 
+2019-09-02 12:38:37,117 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 67(Integer)
+2019-09-02 12:38:37,121 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, dong, floor, room, sex, number, rent from dormitory where id = ? 
+2019-09-02 12:38:37,123 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 67(Integer)
+2019-09-02 12:38:37,126 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-02 12:38:37,128 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 2
+2019-09-02 12:38:37,129 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select dormitory_allocation.id, dormitory_allocation.class_id, dormitory_allocation.dormitory_id,dormitory_allocation.number from dormitory_allocation,dormitory WHERE dormitory_allocation.dormitory_id=dormitory.id and dormitory_id = ? 
+2019-09-02 12:38:37,130 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 73(Integer)
+2019-09-02 12:38:37,134 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, dong, floor, room, sex, number, rent from dormitory where id = ? 
+2019-09-02 12:38:37,137 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 73(Integer)
+2019-09-02 12:38:37,139 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1

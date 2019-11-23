@@ -1,0 +1,16 @@
+2019-09-24 19:46:11,201 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, department_id, name, director, dept_id from department 
+2019-09-24 19:46:11,202 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select class.*,major.name as major,department.name as department,dept.name as dept from class left join major on class.major_id=major.major_id left join department on major.department_id=department.department_id left join dept on department.dept_id=dept.dept_id 
+2019-09-24 19:46:11,203 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 19:46:11,203 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 19:46:11,207 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-24 19:46:11,213 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 10
+2019-09-24 19:46:11,216 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, dept_id, name, director from dept where name!='教务处' and name!='舍管科' 
+2019-09-24 19:46:11,219 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 19:46:11,221 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 3
+2019-09-24 19:46:11,222 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select teacher.id,teacher.teacher_id, teacher.password, teacher.name, teacher.sex, teacher.phone, teacher.email, teacher.adress FROM teacher LEFT JOIN users on teacher.teacher_id=users.username LEFT JOIN user_role on users.id=user_role.user_id LEFT JOIN role on user_role.role_id=role.id where role.name=? 
+2019-09-24 19:46:11,222 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 班主任(String)
+2019-09-24 19:46:11,228 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select a.id, a.role_id, a.name from role as a,user_role as b where a.id=b.role_id and b.user_id=? 
+2019-09-24 19:46:11,229 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 2019728(Integer)
+2019-09-24 19:46:11,230 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 0
+2019-09-24 19:46:11,232 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select a.id, a.role_id, a.name from role as a,user_role as b where a.id=b.role_id and b.user_id=? 
+2019-09-24 19:46:11,233 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 2019729(Integer)

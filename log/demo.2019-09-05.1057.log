@@ -1,0 +1,13 @@
+2019-09-05 12:20:55,377 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, major_id, name, price, department_id from major 
+2019-09-05 12:20:55,380 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-05 12:20:55,381 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 16
+2019-09-05 12:20:55,383 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, department_id, name, director, dept_id from department 
+2019-09-05 12:20:55,384 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-05 12:20:55,396 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 10
+2019-09-05 12:20:55,396 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select class.*,major.name as major,department.name as department,dept.name as dept from class left join major on class.major_id=major.major_id left join department on major.department_id=department.department_id left join dept on department.dept_id=dept.dept_id 
+2019-09-05 12:20:55,397 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, dept_id, name, director from dept where name!='教务处' and name!='舍管科' 
+2019-09-05 12:20:55,400 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-05 12:20:55,399 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-05 12:20:55,402 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 3
+2019-09-05 12:20:55,403 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select teacher.id,teacher.teacher_id, teacher.password, teacher.name, teacher.sex, teacher.phone, teacher.email, teacher.adress FROM teacher LEFT JOIN users on teacher.teacher_id=users.username LEFT JOIN user_role on users.id=user_role.user_id LEFT JOIN role on user_role.role_id=role.id where role.name=? 
+2019-09-05 12:20:55,403 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 班主任(String)

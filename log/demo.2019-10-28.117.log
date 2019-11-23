@@ -1,0 +1,8 @@
+2019-10-28 00:07:10,384 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select distinct major.id,major.major_id as majorId,major.name,major.price,major.department_id as departmentId from class, major WHERE class.major_id=major.major_id 
+2019-10-28 00:07:10,387 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-10-28 00:07:10,389 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 6
+2019-10-28 00:07:10,391 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id,class_id,name,director,grade,major_id from class where major_id = ? 
+2019-10-28 00:07:10,391 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 081001(String)
+2019-10-28 00:07:10,392 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 2
+2019-10-28 00:07:10,392 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select student_status.id,student_status.basic_id, student_status.student_id, student_status.class_id from student_status,student_basic where student_status.basic_id=student_basic.id and student_basic.sex=? and student_status.class_id=? 
+2019-10-28 00:07:10,394 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 男(String), 081001201901(String)

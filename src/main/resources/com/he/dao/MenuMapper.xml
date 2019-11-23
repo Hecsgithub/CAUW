@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.he.dao.MenuMapper" >
+
+    <resultMap id="BaseResultMap" type="com.he.po.Menu" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="url" property="url" jdbcType="VARCHAR" />
+        <result column="path" property="path" jdbcType="VARCHAR" />
+        <result column="component" property="component" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="iconCls" property="iconcls" jdbcType="VARCHAR" />
+        <result column="keepAlive" property="keepalive" jdbcType="BIT" />
+        <result column="requireAuth" property="requireauth" jdbcType="BIT" />
+        <result column="parentId" property="parentid" jdbcType="INTEGER" />
+        <result column="enabled" property="enabled" jdbcType="BIT" />
+    </resultMap>
+    
+     <resultMap id="BaseResultMap1" type="com.he.po.Menu">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+        <result column="path" property="path" jdbcType="VARCHAR"/>
+        <result column="component" property="component" javaType="java.lang.Object"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="iconCls" property="iconcls" jdbcType="VARCHAR"/>
+        <result column="keepAlive" property="keepAlive" jdbcType="BIT"/>
+        <result column="parentId" property="parentid" jdbcType="INTEGER"/>
+        <result column="enabled" property="enabled" jdbcType="INTEGER"/>
+        <association property="meta" javaType="com.he.po.MenuMeta">
+            <result column="keepAlive" property="keepAlive"/>
+            <result column="requireAuth" property="requireAuth"/>
+        </association>
+        <collection property="roles" ofType="com.he.po.Role">
+            <id column="rid" property="id"/>
+            <result column="rname" property="name"/>
+            <result column="rnamezh" property="nameZh"/>
+        </collection>
+        <collection property="children" ofType="com.he.po.Menu">
+            <id column="id2" property="id"/>
+             <result column="url2" property="url" jdbcType="VARCHAR"/>
+            <result column="path2" property="path" jdbcType="VARCHAR"/>
+            <result column="component2" property="component" jdbcType="VARCHAR"/>
+            <result column="name2" property="name" jdbcType="VARCHAR"/>
+            <result column="iconCls2" property="iconcls" jdbcType="VARCHAR"/>
+            <result column="parentId2" property="parentid" jdbcType="INTEGER"/>
+            <result column="enabled2" property="enabled" jdbcType="INTEGER"/>
+            <association property="meta" javaType="com.he.po.MenuMeta">
+                <result column="keepAlive2" property="keepAlive"/>
+                <result column="requireAuth2" property="requireAuth"/>
+            </association>
+            <collection property="children" ofType="com.he.po.Menu">
+                <id column="id3" property="id"/>
+                <result column="name3" property="name" jdbcType="VARCHAR"/>
+            </collection>
+        </collection>
+    </resultMap>
+     
+	
+    <sql id="Base_Column_List" >
+        id, url, path, component, name, iconCls, keepAlive, requireAuth, parentId, enabled
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from menu
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from menu
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insert" parameterType="com.he.po.Menu" >
+        insert into menu (id, url, path, 
+            component, name, iconCls, 
+            keepAlive, requireAuth, parentId, 
+            enabled)
+        values (#{id,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, 
+            #{component,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{iconcls,jdbcType=VARCHAR}, 
+            #{keepalive,jdbcType=BIT}, #{requireauth,jdbcType=BIT}, #{parentid,jdbcType=INTEGER}, 
+            #{enabled,jdbcType=BIT})
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.he.po.Menu" >
+        insert into menu
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="url != null" >
+                url,
+            </if>
+            <if test="path != null" >
+                path,
+            </if>
+            <if test="component != null" >
+                component,
+            </if>
+            <if test="name != null" >
+                name,
+            </if>
+            <if test="iconcls != null" >
+                iconCls,
+            </if>
+            <if test="keepalive != null" >
+                keepAlive,
+            </if>
+            <if test="requireauth != null" >
+                requireAuth,
+            </if>
+            <if test="parentid != null" >
+                parentId,
+            </if>
+            <if test="enabled != null" >
+                enabled,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="url != null" >
+                #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="path != null" >
+                #{path,jdbcType=VARCHAR},
+            </if>
+            <if test="component != null" >
+                #{component,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null" >
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="iconcls != null" >
+                #{iconcls,jdbcType=VARCHAR},
+            </if>
+            <if test="keepalive != null" >
+                #{keepalive,jdbcType=BIT},
+            </if>
+            <if test="requireauth != null" >
+                #{requireauth,jdbcType=BIT},
+            </if>
+            <if test="parentid != null" >
+                #{parentid,jdbcType=INTEGER},
+            </if>
+            <if test="enabled != null" >
+                #{enabled,jdbcType=BIT},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.he.po.Menu" >
+        update menu
+        <set >
+            <if test="url != null" >
+                url = #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="path != null" >
+                path = #{path,jdbcType=VARCHAR},
+            </if>
+            <if test="component != null" >
+                component = #{component,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null" >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="iconcls != null" >
+                iconCls = #{iconcls,jdbcType=VARCHAR},
+            </if>
+            <if test="keepalive != null" >
+                keepAlive = #{keepalive,jdbcType=BIT},
+            </if>
+            <if test="requireauth != null" >
+                requireAuth = #{requireauth,jdbcType=BIT},
+            </if>
+            <if test="parentid != null" >
+                parentId = #{parentid,jdbcType=INTEGER},
+            </if>
+            <if test="enabled != null" >
+                enabled = #{enabled,jdbcType=BIT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="com.he.po.Menu" >
+        update menu
+        set url = #{url,jdbcType=VARCHAR},
+            path = #{path,jdbcType=VARCHAR},
+            component = #{component,jdbcType=VARCHAR},
+            name = #{name,jdbcType=VARCHAR},
+            iconCls = #{iconcls,jdbcType=VARCHAR},
+            keepAlive = #{keepalive,jdbcType=BIT},
+            requireAuth = #{requireauth,jdbcType=BIT},
+            parentId = #{parentid,jdbcType=INTEGER},
+            enabled = #{enabled,jdbcType=BIT}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    
+<!--     1.所有菜单项 -->
+    <select id="getAllMenu" resultMap="BaseResultMap1">
+        select m.*,r.`id` as rid,r.`role_id` as rname,r.`name` as rnamezh 
+        from menu m left join menu_role mr on m.`id`=mr.`menu_id` 
+        left join role r on mr.`role_id`=r.`id` 
+        WHERE m.`enabled`=true order by m.`id` desc
+    </select>
+
+<!--  2.  根据用户获取菜单  -->
+    
+    <select id="getMenusByUsersId" parameterType="java.lang.Integer" resultMap="BaseResultMap1">
+	select
+	m1.`id`,m1.`path`,m1.`component`,m1.`iconCls`,m1.`name`,m1.`requireAuth`,m2.`component`
+	as component2,m2.`iconCls` as iconCls2,m2.`keepAlive` as
+	keepAlive2,m2.`name` as name2,m2.`path` as path2,m2.`requireAuth` as
+	requireAuth2 
+	from menu m1,menu m2 where m1.`id`=m2.`parentId` and
+	m1.`id`!=1 and
+	 m2.`id` in
+	 (select mr.`menu_id` 
+	 from user_role u_r,menu_role mr
+	where u_r.`role_id`=mr.`role_id` and u_r.`user_id`=#{id}) 
+	and m2.`enabled`=true
+	order by m1.`id`,m2.`id`
+    </select>
+   
+     <!--  3.新增用户角色关系以批量方式-->
+
+
+   <insert id="insertListMenu" parameterType="java.util.List" >
+	insert
+	into menu(url, path, 
+            component, name, iconCls, 
+            keepAlive, requireAuth, parentId, 
+            enabled)
+	values
+	<foreach collection="list" item="item" index="index"
+		separator=",">
+ 	( #{item.url,jdbcType=VARCHAR},
+ 	 #{item.path,jdbcType=VARCHAR}, 
+            #{item.component,jdbcType=VARCHAR}, 
+            #{item.name,jdbcType=VARCHAR}, 
+            #{item.iconcls,jdbcType=VARCHAR}, 
+            #{item.keepalive,jdbcType=BIT},
+             #{item.requireauth,jdbcType=BIT},
+              #{item.parentid,jdbcType=INTEGER}, 
+            #{item.enabled,jdbcType=BIT})    
+	</foreach>
+</insert>
+    
+    
+<!--   4.批量删除用户角色关系-->
+     
+    <delete id="deleteListMenu" parameterType="java.util.List" >
+    delete from menu where id in
+    <foreach collection="list" item="item" open="(" close=")" separator=",">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+    or parentId in
+    <foreach collection="list" item="item" open="(" close=")" separator=",">
+      #{item.id,jdbcType=INTEGER}
+    </foreach>
+    </delete>
+
+    
+    
+<!--5.批量修改用户角色关系-->
+    
+	<update id="updateListMenu" parameterType="java.util.List">
+	
+    <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+       update menu
+        set url = #{item.url,jdbcType=VARCHAR},
+            path = #{item.path,jdbcType=VARCHAR},
+            component = #{item.component,jdbcType=VARCHAR},
+            name = #{item.name,jdbcType=VARCHAR},
+            iconCls = #{item.iconcls,jdbcType=VARCHAR},
+            keepAlive = #{item.keepalive,jdbcType=BIT},
+            requireAuth = #{item.requireauth,jdbcType=BIT},
+            parentId = #{item.parentid,jdbcType=INTEGER},
+            enabled = #{item.enabled,jdbcType=BIT}
+        where id = #{item.id,jdbcType=INTEGER}
+    </foreach>         		
+	</update> 
+	
+<!--    6.所有菜单，前端显示使用 -->
+    <select id="selectAllMenu"  resultMap="BaseResultMap1">
+	select
+	m1.`id`,m1.`url`,m1.`path`,m1.`component`,m1.`iconCls`,m1.`name`,m1.`requireAuth`
+	,m1.`iconCls`,m1.`keepAlive`,m1.`parentId`,m1.`enabled`
+	,m2.`component`as component2,m2.`iconCls` as iconCls2,m2.`keepAlive` as
+	keepAlive2,m2.`name` as name2,m2.`path` as path2,m2.`requireAuth` as
+	requireAuth2 ,m2.`url` as url2,m2.`id` as id2,m2.`parentId` as parentId2,m2.`enabled` as enabled2
+	
+	from menu m1,menu m2 where m1.`id`=m2.`parentId`
+	order by m1.`id`,m2.`id`
+    </select>
+   
+   <!--   7.查询拥有与否某权限的菜单 -->
+    <select id="selectnoaddrolemenuinfo" resultMap="BaseResultMap1" parameterType="java.lang.String" >
+    select
+	m1.`id`,m1.`url`,m1.`path`,m1.`component`,m1.`iconCls`,m1.`name`,m1.`requireAuth`
+	,m1.`iconCls`,m1.`keepAlive`,m1.`parentId`,m1.`enabled`
+	,m2.`component`as component2,m2.`iconCls` as iconCls2,m2.`keepAlive` as
+	keepAlive2,m2.`name` as name2,m2.`path` as path2,m2.`requireAuth` as
+	requireAuth2 ,m2.`url` as url2,m2.`id` as id2,m2.`parentId` as parentId2,m2.`enabled` as enabled2
+	from menu m1,menu m2 where m1.`id`=m2.`parentId` 
+	and
+	 m2.`id` 
+	 <if test="type =='add'">
+       not
+        </if>
+	 in
+	 (select mr.`menu_id` 
+	 from role r,menu_role mr
+	where r.`id`=mr.`role_id` 
+	 and r.role_id =#{roleId,jdbcType=VARCHAR}
+        )
+	order by m1.`id`,m2.`id`
+        
+        
+    </select>
+   
+<!--    8.查询界面的父节点是否为1 -->
+   
+   <select id="selectparentis1" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from menu
+        where parentId=1 and id = #{id,jdbcType=INTEGER}
+    </select>
+    
+    
+<!--         //9根据条件查组件 -->
+<!--     Menu selectMenuIdByName(Menu m); -->
+    
+      <select id="selectMenuIdByName" resultMap="BaseResultMap" parameterType="com.he.po.Menu" >
+        select 
+        <include refid="Base_Column_List" />
+        from menu
+        <where>
+        	<if test="id != null and id!=''" >
+              and  id = #{id,jdbcType=VARCHAR}
+            </if>
+        	<if test="url != null and url!=''" >
+             and   url = #{url,jdbcType=VARCHAR}
+            </if>
+            <if test="path != null and path!=''" >
+              and  path = #{path,jdbcType=VARCHAR}
+            </if>
+            <if test="component != null and component!=''" >
+              and  component = #{component,jdbcType=VARCHAR}
+            </if>
+            <if test="name != null and name!=''" >
+              and  name = #{name,jdbcType=VARCHAR}
+            </if>
+            <if test="iconcls != null and iconcls!=''" >
+              and  iconCls = #{iconcls,jdbcType=VARCHAR}
+            </if>
+            <if test="keepalive != null" >
+              and  keepAlive = #{keepalive,jdbcType=BIT}
+            </if>
+            <if test="requireauth != null and requireauth!=''" >
+              and  requireAuth = #{requireauth,jdbcType=BIT}
+            </if>
+            <if test="parentid != null and  parentid!=''" >
+             and   parentId = #{parentid,jdbcType=INTEGER}
+            </if>
+            <if test="enabled != null and enabled!=''" >
+              and  enabled = #{enabled,jdbcType=BIT}
+            </if>
+        </where>
+        
+    </select>
+    
+</mapper>

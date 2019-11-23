@@ -1,0 +1,8 @@
+2019-09-24 17:28:41,277 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 正常缴费(String)
+2019-09-24 17:28:41,279 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-24 17:28:41,280 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select COUNT(student_status.id) from student_status left join class on student_status.class_id=class.class_id left join major on class.major_id=major.major_id left join department on major.department_id=department.department_id left join dept on department.dept_id=dept.dept_id WHERE student_status.student_id not in ( SELECT pay.student_id from pay ) 
+2019-09-24 17:28:41,281 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 17:28:41,293 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-24 17:28:41,601 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, student_id, state from apply WHERE state= ? 
+2019-09-24 17:28:41,603 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 未审核(String)
+2019-09-24 17:28:41,606 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0

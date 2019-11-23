@@ -1,0 +1,16 @@
+2019-09-24 18:45:55,688 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 0
+2019-09-24 18:45:55,959 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select a.id, a.role_id, a.name from role as a,user_role as b where a.id=b.role_id and b.user_id=? 
+2019-09-24 18:45:55,959 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 2019733(Integer)
+2019-09-24 18:45:55,963 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 0
+2019-09-24 18:45:55,964 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 6
+2019-09-24 18:45:58,426 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, student_id, state from apply WHERE state= ? 
+2019-09-24 18:45:58,428 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 未审核(String)
+2019-09-24 18:45:58,439 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-24 18:45:59,408 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, dept_id, name, director from dept where name!='教务处' and name!='舍管科' 
+2019-09-24 18:45:59,409 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-24 18:45:59,411 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 3
+2019-09-24 18:45:59,412 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select COUNT(student_status.id) from student_status left join class on student_status.class_id=class.class_id left join major on class.major_id=major.major_id left join department on major.department_id=department.department_id left join dept on department.dept_id=dept.dept_id WHERE student_status.student_id in ( SELECT pay.student_id from pay WHERE pay.remarks = ? ) 
+2019-09-24 18:45:59,413 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 绿色通道(String)
+2019-09-24 18:45:59,417 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-24 18:45:59,419 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select COUNT(student_status.id) from student_status left join class on student_status.class_id=class.class_id left join major on class.major_id=major.major_id left join department on major.department_id=department.department_id left join dept on department.dept_id=dept.dept_id WHERE student_status.student_id in ( SELECT pay.student_id from pay WHERE pay.remarks = ? ) 
+2019-09-24 18:45:59,420 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 正常缴费(String)

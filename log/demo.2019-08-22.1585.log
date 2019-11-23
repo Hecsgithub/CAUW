@@ -1,0 +1,7 @@
+2019-08-22 22:37:39,828 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select major.*, Class.id as cid, Class.class_id as cclass_id, Class.name as cname, Class.director as cdirector, Class.grade as cgrade, Class.major_id as cmajor_id from major,Class WHERE major.major_id=Class.major_id 
+2019-08-22 22:37:39,831 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-08-22 22:37:39,835 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 22
+2019-08-22 22:37:40,914 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select major.*, Class.id as cid, Class.class_id as cclass_id, Class.name as cname, Class.director as cdirector, Class.grade as cgrade, Class.major_id as cmajor_id from major,Class WHERE major.major_id=Class.major_id 
+2019-08-22 22:37:40,932 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-08-22 22:37:40,934 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 22
+2019-08-22 22:37:46,758 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: SELECT a.* from dormitory_allocation as a ,dormitory as b where a.dormitory_id=b.id and a.number < b.number and b.sex=? and a.dormitory_id in ( SELECT dormitory_id from dormitory_allocation GROUP BY (dormitory_id) HAVING COUNT(dormitory_id) = 1 ) 

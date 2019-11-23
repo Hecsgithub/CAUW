@@ -1,0 +1,16 @@
+2019-09-23 04:39:55,376 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 6
+2019-09-23 04:39:55,880 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select major from student_basic where state='0' GROUP BY(major) 
+2019-09-23 04:39:55,881 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-23 04:39:55,886 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 7
+2019-09-23 04:39:55,888 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select student_status.id, student_status.basic_id, student_status.student_id, student_status.class_id from student_status,student_basic where student_status.basic_id=student_basic.id and student_basic.sex=? and student_basic.major=? and student_status.class_id='0' 
+2019-09-23 04:39:55,889 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 男(String), 土木工程(String)
+2019-09-23 04:39:55,894 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-23 04:39:55,897 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select student_status.id, student_status.basic_id, student_status.student_id, student_status.class_id from student_status,student_basic where student_status.basic_id=student_basic.id and student_basic.sex=? and student_basic.major=? and student_status.class_id='0' 
+2019-09-23 04:39:55,898 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 女(String), 土木工程(String)
+2019-09-23 04:39:55,899 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-23 04:39:55,900 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select student_status.id, student_status.basic_id, student_status.student_id, student_status.class_id from student_status,student_basic where student_status.basic_id=student_basic.id and student_basic.sex=? and student_basic.major=? and student_status.class_id='0' 
+2019-09-23 04:39:55,901 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 男(String), 工业设计(String)
+2019-09-23 04:39:55,901 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-23 04:39:55,902 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select student_status.id, student_status.basic_id, student_status.student_id, student_status.class_id from student_status,student_basic where student_status.basic_id=student_basic.id and student_basic.sex=? and student_basic.major=? and student_status.class_id='0' 
+2019-09-23 04:39:55,904 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 女(String), 工业设计(String)
+2019-09-23 04:39:55,904 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0

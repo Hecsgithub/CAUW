@@ -1,0 +1,29 @@
+2019-09-23 04:39:55,933 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 女(String), 计算机科学与技术(String)
+2019-09-23 04:39:55,934 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select major.*, Class.id as cid, Class.class_id as cclass_id, Class.name as cname, Class.director as cdirector, Class.grade as cgrade, Class.major_id as cmajor_id from major,Class WHERE major.major_id=Class.major_id 
+2019-09-23 04:39:55,940 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-23 04:39:55,942 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select student_status.id, student_status.basic_id, student_status.student_id, student_status.class_id from student_status,student_basic where student_status.basic_id=student_basic.id and student_basic.sex=? and student_basic.major=? and student_status.class_id='0' 
+2019-09-23 04:39:55,941 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-23 04:39:55,945 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 男(String), 通信工程(String)
+2019-09-23 04:39:55,946 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-23 04:39:55,947 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-23 04:39:55,948 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select student_status.id, student_status.basic_id, student_status.student_id, student_status.class_id from student_status,student_basic where student_status.basic_id=student_basic.id and student_basic.sex=? and student_basic.major=? and student_status.class_id='0' 
+2019-09-23 04:39:55,952 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 女(String), 通信工程(String)
+2019-09-23 04:39:55,955 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-23 04:39:55,956 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select student_status.id, student_status.basic_id, student_status.student_id, student_status.class_id from student_status,student_basic where student_status.basic_id=student_basic.id and student_basic.sex=? and student_basic.major=? and student_status.class_id='0' 
+2019-09-23 04:39:55,958 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 男(String), 风景园林(String)
+2019-09-23 04:39:55,961 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-23 04:39:55,962 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select student_status.id, student_status.basic_id, student_status.student_id, student_status.class_id from student_status,student_basic where student_status.basic_id=student_basic.id and student_basic.sex=? and student_basic.major=? and student_status.class_id='0' 
+2019-09-23 04:39:55,963 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 女(String), 风景园林(String)
+2019-09-23 04:39:55,964 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-23 04:39:55,969 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select student_basic.major as major,COUNT(*) as classnumber from student_basic,student_status where student_basic.id=student_status.basic_id and student_status.class_id='0' GROUP BY(`major`) 
+2019-09-23 04:39:55,969 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-23 04:39:55,971 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 0
+2019-09-23 04:39:55,983 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, teacher_id, password, name, sex, phone, email, adress from teacher where teacher_id = ? 
+2019-09-23 04:39:55,984 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 2019717(String)
+2019-09-23 04:39:55,985 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select a.id, a.role_id, a.name from role as a,user_role as b where a.id=b.role_id and b.user_id=? 
+2019-09-23 04:39:55,986 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 2019717(Integer)
+2019-09-23 04:39:55,996 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 0
+2019-09-23 04:39:55,997 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-23 04:39:56,048 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, dept_id, name, director from dept where name!='教务处' and name!='舍管科' 
+2019-09-23 04:39:56,049 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 
+2019-09-23 04:39:56,051 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 3

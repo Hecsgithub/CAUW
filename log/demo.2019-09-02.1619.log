@@ -1,0 +1,16 @@
+2019-09-02 19:07:08,860 DEBUG (BaseJdbcLogger.java:143)- <====      Total: 1
+2019-09-02 19:07:08,862 DEBUG (BaseJdbcLogger.java:143)- <==      Total: 1
+2019-09-02 19:07:08,863 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: insert into apply ( student_id, state ) values ( ?, ? ) 
+2019-09-02 19:07:08,864 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 1938050103(String), 未审核(String)
+2019-09-02 19:07:08,873 DEBUG (BaseJdbcLogger.java:143)- <==    Updates: 1
+2019-09-02 19:07:08,874 DEBUG (BaseJdbcLogger.java:143)- ==>  Preparing: select id, student_id, state from apply WHERE student_id= ? and state= ? 
+2019-09-02 19:07:08,875 DEBUG (BaseJdbcLogger.java:143)- ==> Parameters: 1938050103(String), 未审核(String)
+2019-09-02 19:07:08,876 DEBUG (BaseJdbcLogger.java:143)- ====>  Preparing: select id, basic_id, student_id, class_id from student_status where student_id = ? 
+2019-09-02 19:07:08,877 DEBUG (BaseJdbcLogger.java:143)- ====> Parameters: 1938050103(String)
+2019-09-02 19:07:08,878 DEBUG (BaseJdbcLogger.java:143)- ======>  Preparing: select id, name, sex, birthday, phone, ID_number, email, parent_phone, adress, major, state from student_basic where id = ? 
+2019-09-02 19:07:08,879 DEBUG (BaseJdbcLogger.java:143)- ======> Parameters: 19004(String)
+2019-09-02 19:07:08,880 DEBUG (BaseJdbcLogger.java:143)- <======      Total: 1
+2019-09-02 19:07:08,880 DEBUG (BaseJdbcLogger.java:143)- ======>  Preparing: select id, class_id, name, director, grade, major_id from class where class_id = ? 
+2019-09-02 19:07:08,881 DEBUG (BaseJdbcLogger.java:143)- ======> Parameters: 080901201901(String)
+2019-09-02 19:07:08,882 DEBUG (BaseJdbcLogger.java:143)- ========>  Preparing: select id, major_id, name, price, department_id from major where major_id = ? 
+2019-09-02 19:07:08,883 DEBUG (BaseJdbcLogger.java:143)- ========> Parameters: 080901(String)
